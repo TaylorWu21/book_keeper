@@ -8,7 +8,8 @@ class Navbar extends React.Component {
     super(props);
   }
 
-  logout = (e) => {
+  logout = (e) =>
+   {
 		e.preventDefault();
 		this.props.dispatch(handleLogout(this.props.history));
 	}
@@ -22,7 +23,12 @@ class Navbar extends React.Component {
 				]
 			)
 	  else
-	  	return(<li><Link to="/login">Login</Link></li>)
+	  	return(
+        [
+          <li key='auth-link-0'><Link to="/login">Login</Link></li>,
+          <li key='auth-link-1'><Link to="/signup">Sign Up</Link></li>
+        ]
+      )
 	}
 
 	render() {

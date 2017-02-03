@@ -5,16 +5,11 @@ import { handleLogin } from './actions';
 class Login extends React.Component {
     constructor(props) {
 		super(props);
-		const redirectLocation = '/'
-		this.handleSubmit = this.handleSubmit.bind(this);
+		const redirectLocation = '/';
 		this.state = { error: false, redirectRoute: redirectLocation }
 	}
 
-  componentWillMount() {
-    debugger;
-  }
-
-	handleSubmit(e) {
+	handleSubmit = (e) => {
     e.preventDefault();
     const email = this.refs.email.value;
     const password = this.refs.password.value;
@@ -26,8 +21,8 @@ class Login extends React.Component {
 			<div>
 			  <h3>Login</h3>
 			  <form onSubmit={(e) => this.handleSubmit(e) }>
-			    <input type='text' ref='email' required placeholder='Email' />
-			    <input type='password' ref='password' required placeholder='Password' />
+			    <input type='text' ref='email' placeholder='Email' required />
+			    <input type='password' ref='password' placeholder='Password' required />
 			    <input type='submit' className='btn' value='Login' />
 			  </form>
 			</div>

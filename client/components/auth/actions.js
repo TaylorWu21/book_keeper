@@ -23,7 +23,7 @@ export const handleLogin = (email, password, redirect, history) => {
       localStorage.setItem('apiKey', response.api_key);
       localStorage.setItem('userId', response.id);
       dispatch(loggedIn(response.id, response.api_key));
-      history.push(redirect);
+      history.push('/admin');
     }).fail( response => {
       // TODO: Handle this better
       console.log(response);
@@ -45,5 +45,29 @@ export const handleLogout = (history) => {
     }).fail( response => {
       // TODO: Handle this better
     });
+  }
+}
+
+export const handleSignup = (email, name, phone, password, history) => {
+  return(dispatch) => {
+    $.ajax({
+      url: '/users',
+      type: 'POST',
+      dataType: 'JSON',
+      data: { user: { email, name, phone, password } }
+    }).done( response => {
+      // set localStorage apiKey
+			localStorage.setItem('apiKey', response.api_key);
+			// set localStorage userId
+			localStorage.setItem('userId', response.id);
+			// dispatch the action
+			dispatch(loggedIn(response.id, response.api_key));
+			// redirect
+      history.push('/admin');
+    }).fail( response => {
+      console.log(response);
+      dispatch(logout());
+      // TODO: handle this better
+    })
   }
 }
