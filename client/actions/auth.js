@@ -20,7 +20,7 @@ export const loginUser = (email, password) => {
   }
 }
 
-export const createUser = (email, name, phone, password) => {
+export const SignupUser = (email, name, phone, password) => {
   return (dispatch) => {
     $.ajax({
       url: 'users',
@@ -36,7 +36,7 @@ export const createUser = (email, name, phone, password) => {
   }
 }
 
-export const refreshLogin = (user = null) => {
+export const refreshLogin = (user = {} ) => {
   return (dispatch) => {
     if(user) {
       dispatch(setUser(user))
