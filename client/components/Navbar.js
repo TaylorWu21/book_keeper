@@ -1,24 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { handleLogout } from './auth/actions';
 import { connect } from 'react-redux';
+import FaBars from 'react-icons/lib/fa/bars';
+import { logout } from '../actions/auth';
 
 class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
+
+  componentDidMount() {
+    $(".button-collapse").sideNav();
   }
 
-  logout = (e) =>
-   {
+  logout = (e) => {
 		e.preventDefault();
-		this.props.dispatch(handleLogout(this.props.history));
+		this.props.dispatch(logout());
 	}
 
 	authLink() {
-		if(this.props.auth)
+		if(Object.keys(this.props.user).length !== 0)
 			return(
 				[
-				  <li key='auth-link-0'><Link to="/admin">Admin</Link></li>,
+				  <li key='auth-link-0'><Link to="/dashboard">Dashboard</Link></li>,
 				  <li key='auth-link-1'><a href='#' onClick={this.logout}>Logout</a></li>
 				]
 			)
@@ -37,8 +38,15 @@ class Navbar extends React.Component {
 			  <div className="navbar-fixed">
 				  <nav>
 				    <div className="nav-wrapper">
-				      <Link to='/' className='brand-logo'>Redux Rails Auth</Link>
-				      <ul id="nav-mobile" className="right">
+				      <Link to='/' className='brand-logo'>Book Keeper</Link>
+              <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={29}/></a>
+				      <ul className="right hide-on-med-and-down">
+				        <li><Link to="/">Home</Link></li>
+				        <li><Link to="/about">About</Link></li>
+				        <li><Link to="/contact">Contact</Link></li>
+				        { this.authLink() }
+				      </ul>
+				      <ul className="side-nav" id="mobile-demo">
 				        <li><Link to="/">Home</Link></li>
 				        <li><Link to="/about">About</Link></li>
 				        <li><Link to="/contact">Contact</Link></li>
@@ -51,5 +59,7 @@ class Navbar extends React.Component {
 		)
 	}
 }
+
+
 
 export default connect()(Navbar);

@@ -1,27 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../components/Navbar';
-import { loggedIn, logout } from '../components/auth/actions';
+import { refreshLogin } from '../actions/auth';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentWillMount() {
-    const userId = localStorage.getItem('userId');
-    const apiKey = localStorage.getItem('apiKey');
-    if(!this.props.auth && apiKey) {
-      this.props.dispatch(loggedIn(userId, apiKey));
-    } else {
-      this.props.dispatch(logout());
-    }
+    this.props.dispatch(refreshLogin());
   }
 
   render() {
     return(
       <div>
-        <Navbar auth={this.props.auth} history={this.props.history} />
+        <Navbar user={this.props.user} history={this.props.history} />
         {this.props.children}
       </div>
     )
@@ -29,13 +20,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  if(state.auth) {
-    return {
-      auth: state.auth.isAuthenticated
-    }
-  } else {
-    return state;
-  }
+  return { user: state.user }
 }
+
 
 export default connect(mapStateToProps)(App);

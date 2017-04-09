@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+
   root 'home#index'
 
-  #might be
-  # devise_for :users, controllers: {
-  #       sessions: 'sessions',
-  #       registrations: 'registrations'
-  # }
+  namespace :api do
+    get 'user', to: 'users#index'
+  end
 
   devise_for :users, controllers: {
         sessions: 'users/sessions',
