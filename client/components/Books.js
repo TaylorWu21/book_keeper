@@ -1,7 +1,13 @@
 import React from 'react';
 import Book from './Book';
+import { connect } from 'react-redux';
+import { saveBook } from '../actions/books';
 
 class Books extends React.Component {
+
+  saveBook = (title, author, description, image, category, isbn) => {
+    this.props.dispatch(saveBook(title, author, description, image, category, isbn));
+  }
 
   render() {
     const books = this.props.books.map( (book, i) => {
@@ -20,6 +26,7 @@ class Books extends React.Component {
             image={book.volumeInfo.imageLinks}
             category={book.volumeInfo.categories}
             isbn={book.volumeInfo.industryIdentifiers}
+            saveBook={this.saveBook}
           />
         );
     });
@@ -31,4 +38,4 @@ class Books extends React.Component {
   }
 }
 
-export default Books;
+export default connect()(Books);

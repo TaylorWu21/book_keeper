@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'user', to: 'users#index'
+    get 'book', to: 'books#index'
+    post 'book', to: 'books#create'
   end
 
   devise_for :users, controllers: {

@@ -21,7 +21,20 @@ const Book = (book) => {
         <b>Description:</b> {book.description}
       </p>
     </div>
-    <a href='#' className='secondary-content'>Add Book</a>
+    <button 
+      href='#' 
+      className='secondary-content btn'
+      onClick={() => book.saveBook(
+        book.title, 
+        book.author[0], 
+        book.description,
+        book.image.thumbnail,
+        book.category[0],
+        book.isbn[0].identifier
+      )}
+    >
+      Add Book
+    </button>
   </li>
   )
 };
