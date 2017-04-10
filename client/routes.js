@@ -14,7 +14,7 @@ import Signup from './components/Signup';
 // FIX AUTH
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
-  // predicate: auth => auth.isAuthenticated,
+  predicate: auth => auth.isAuthenticated,
   redirectAction: routerActions.replace,
   wrapperDisplayName: "UserIsAuthenticated"
 });
