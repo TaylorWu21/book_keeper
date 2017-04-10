@@ -1,7 +1,11 @@
 import { browserHistory } from 'react-router';
 
 const setUser = ( user = {} ) => {
-  return {type: 'USER', user }
+  return {type: "LOGIN", user }
+}
+
+const logoutUser = () => {
+  return { type: "LOGOUT" }
 }
 
 export const loginUser = (email, password) => {
@@ -32,24 +36,25 @@ export const SignupUser = (email, name, phone, password) => {
       browserHistory.push('/dashboard');
     }).fail( data => {
       console.log(data);
-    })
+    });
   }
 }
 
-export const refreshLogin = (user = {} ) => {
+export const refreshLogin = () => {
   return (dispatch) => {
-    if(user) {
-      dispatch(setUser(user))
-    } else {
-      $.ajax({
-        url: 'api/user',
-        type: 'GET'
-      }).done( user => {
+    $.ajax({
+      url: 'api/user',
+      type: 'GET',
+      datatype: 'JSON'
+    }).done( user => {
+      if(user.id) {
         dispatch(setUser(user));
-      }).fail( data => {
-        console.log(data);
-      })
-    }
+      } else {
+        dispatch(logoutUser());
+      }
+    }).fail( data => {
+      console.log(data);
+    });
   }
 }
 
@@ -59,8 +64,8 @@ export const logout = () => {
       url: '/users/sign_out',
       type: 'DELETE'
     }).done( () => {
+      dispatch(logoutUser());
       browserHistory.push('/');
-      dispatch(setUser());
-    })
+    });
   }
 }

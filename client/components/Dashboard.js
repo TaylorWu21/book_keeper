@@ -1,12 +1,12 @@
 import React from 'react';
-import SearchBar from './SearchBar';
+import BookSearch from './BookSearch';
 
 class Dashboard extends React.Component {
 
   render() {
     return(
       <div>
-        <SearchBar />
+        <BookSearch />
         dashboard component
       </div>
     )

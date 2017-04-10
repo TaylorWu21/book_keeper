@@ -16,7 +16,7 @@ class Navbar extends React.Component {
 	}
 
 	authLink() {
-		if(Object.keys(this.props.user).length !== 0)
+		if(Object.keys(this.props.auth).length > 1)
 			return(
 				[
 				  <li key='auth-link-0'><Link to="/dashboard">Dashboard</Link></li>,

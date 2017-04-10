@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Navbar from '../components/Navbar';
 import { refreshLogin } from '../actions/auth';
+import { UserIsAuthenticated } from '../routes';
 
 class App extends React.Component {
 
@@ -10,17 +11,18 @@ class App extends React.Component {
   }
 
   render() {
+    const { auth, history, children} = this.props;
     return(
       <div>
-        <Navbar user={this.props.user} history={this.props.history} />
-        {this.props.children}
+        <Navbar auth={auth} history={history} />
+        {children}
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.user }
+  return { auth: state.auth }
 }
 
 
