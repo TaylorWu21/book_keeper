@@ -5,7 +5,6 @@ class Api::BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-    binding.pry
     if(@book.save)
       render json: @book
     else

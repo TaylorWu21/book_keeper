@@ -1,0 +1,42 @@
+.alertBase {
+ position: fixed;
+ top: 0px;
+ right: 0px;
+ left: 0px;
+ padding: 15px 0px;
+ border-bottom: 1px solid transparent;
+ z-index: 1999;
+}
+
+.alertInfo {
+ color: #31708f;
+ background-color: #d9edf7;
+ border-color: #bce8f1;
+}
+
+.alertSuccess {
+ color: #3c763d;
+ background-color: #dff0d8;
+ border-color: #d6e9c6;
+}
+
+.alertError {
+ color: #a94442;
+ background-color: #f2dede;
+ border-color: #ebccd1;
+}
+
+.flashCont {
+ position: relative;
+}
+
+.closeFlash {
+ font-size: 2rem;
+ position: absolute;
+ right: 15px;
+ top: -11px;
+}
+
+.pointer {
+  cursor: pointer;
+}

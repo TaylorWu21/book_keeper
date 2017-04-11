@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Navbar from '../components/Navbar';
 import { refreshLogin } from '../actions/auth';
 import { UserIsAuthenticated } from '../routes';
+import Flash from '../components/Flash';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
     return(
       <div>
         <Navbar auth={auth} history={history} />
+        <Flash />
         {children}
       </div>
     )

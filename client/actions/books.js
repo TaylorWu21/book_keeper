@@ -1,3 +1,5 @@
+import { setFlash } from './flash';
+
 export const getBooks = () => {
   return (dispatch) => {
     $.ajax({
@@ -20,6 +22,7 @@ export const saveBook = (title, author, description, image, category, isbn) => {
       dataType: 'JSON',
       data: { book: { title, author, description, image, category, isbn } }
     }).done( book => {
+      dispatch(setFlash('Book Saved!', 'success'))
       dispatch({ type: "ADD_BOOK", book });
     }).fail( data => {
       console.log(data);
@@ -33,6 +36,7 @@ export const deleteBook = (id) => {
       url: `api/book/${id}`,
       type: 'DELETE'
     }).done( () => {
+      console.log('hit this');
       dispatch({ type: "DELETE_BOOK", id });
     }).fail( () => {
       console.log('failed to delete');

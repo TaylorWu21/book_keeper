@@ -1,7 +1,7 @@
 const books = (state = [], action) => {
   switch(action.type) {
     case "BOOKS":
-      return [action.books]
+      return action.books
       break;
     case "ADD_BOOK":
       return [action.book, ...state];
