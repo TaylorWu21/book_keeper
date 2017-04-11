@@ -14,7 +14,8 @@ class Api::BooksController < ApplicationController
   end
 
   def destroy
-    #DO SOMETHING HERE
+    @book = Book.find(params[:id])
+    @book.destroy
   end
 
   private

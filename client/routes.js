@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import Library from './components/Library';
 
 // FIX AUTH
 const UserIsAuthenticated = UserAuthWrapper({
@@ -28,6 +29,7 @@ export default (
       <Route path='/login' component={Login} />
       <Route path='/signup' component={Signup} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
+      <Route path='/library' component={UserIsAuthenticated(Library)} />
     </Route>
     <Route path="*" status={404} component={NoMatch}/>
   </Route>
