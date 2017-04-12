@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { clearFlash } from'../actions/flash';
-// import '../sass/_flash.scss';
 
 const fadeFlash = (dispatch) => {
-  // setTimeout( () => {
-  //   dispatch(clearFlash())
-  // }, 10000)
+  setTimeout( () => {
+    dispatch(clearFlash())
+  }, 10000)
 }
 
 const Flash = ({ flash, dispatch }) => {
