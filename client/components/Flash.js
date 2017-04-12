@@ -1,25 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { clearFlash } from'../actions/flash';
-import { pointer, alertBase, alertInfo, alertSuccess, alertError, closeFlash, flashCont } from './styles.scss';
+import '../sass/_flash.scss';
 
 const fadeFlash = (dispatch) => {
   setTimeout( () => {
     dispatch(clearFlash())
-  }, 1000)
+  }, 10000)
 }
 
 const Flash = ({ flash, dispatch }) => {
   let style;
+  console.log(flash);
   switch(flash.msgType) {
     case 'info':
-      style = alertInfo
+      style = 'alertInfo'
       break;
     case 'success':
-      style = alertSuccess
+      style = 'alertSuccess'
       break;
     case 'error':
-      style = alertError
+      style = 'alertError'
       break;
     default:
       style = ''
@@ -29,15 +30,17 @@ const Flash = ({ flash, dispatch }) => {
   if(flash.message) {
     return(
       <div
-        className={`${pointer} ${style} ${alertBase} center`}
+        className={`pointer ${style} alertBase center`}
         onClick={ () => dispatch(clearFlash()) }>
-        <div className={flashCont}>
-          <a className={`${pointer} ${closeFlash} grey-text text-darken-2`}>&times;</a>
+        <div className='flashCont'>
+          <a className='pointer closeFlash grey-text text-darken-2'>&times;</a>
           {flash.message}
           { fadeFlash(dispatch) }
         </div>
       </div>
     )
+  } else {
+    return null;
   }
 }
 

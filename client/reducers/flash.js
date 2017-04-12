@@ -1,7 +1,7 @@
 const flash = ( state = {}, action) => {
   switch(action.type) {
     case "SET_FLASH":
-      return { message: action.message, type: action.msgType }
+      return { message: action.message, msgType: action.msgType }
       break;
     case "CLEAR_FLASH":
       return {}
