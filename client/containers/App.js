@@ -4,11 +4,13 @@ import Navbar from '../components/Navbar';
 import { refreshLogin } from '../actions/auth';
 import { UserIsAuthenticated } from '../routes';
 import Flash from '../components/Flash';
+import { setFlash } from '../actions/flash';
 
 class App extends React.Component {
 
   componentWillMount() {
     this.props.dispatch(refreshLogin());
+    this.props.dispatch(setFlash('HELLO', 'error'))
   }
 
   render() {
