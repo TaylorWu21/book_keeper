@@ -10,7 +10,6 @@ const fadeFlash = (dispatch) => {
 
 const Flash = ({ flash, dispatch }) => {
   let style;
-  console.log(flash);
   switch(flash.msgType) {
     case 'info':
       style = 'alertInfo'

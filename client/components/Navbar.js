@@ -20,7 +20,8 @@ class Navbar extends React.Component {
 			return(
 				[
 				  <li key='auth-link-0'><Link to="/dashboard">Dashboard</Link></li>,
-				  <li key='auth-link-1'><a href='#' onClick={this.logout}>Logout</a></li>
+				  <li key='auth-link-1'><Link to="/library">library</Link></li>,
+				  <li key='auth-link-2'><a href='#' onClick={this.logout}>Logout</a></li>
 				]
 			)
 	  else

@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import { setlFlash } from './flash';
+import { setFlash } from './flash';
 
 const setUser = ( user = {} ) => {
   return {type: "LOGIN", user }

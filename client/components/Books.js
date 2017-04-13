@@ -23,10 +23,10 @@ class Books extends React.Component {
           <Book
             key={i}
             title={book.title}
-            author={book.authors}
+            author={book.author}
             description={book.description}
             image={book.image}
-            category={book.categories}
+            category={book.category}
             isbn={book.isbn}
             saveBook={this.saveBook}
             parent={this.props.parent}

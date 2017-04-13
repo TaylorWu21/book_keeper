@@ -26,7 +26,7 @@ export const saveBook = (title, author, description, image, category, isbn) => {
       dispatch(setFlash('Book Saved!', 'success'));
       dispatch({ type: "ADD_BOOK", book });
     }).fail( data => {
-      dispatch(setFlash('Could not save book', 'error'));
+      dispatch(setFlash('Book already exists in your library', 'error'));
       console.log(data);
     });
   }

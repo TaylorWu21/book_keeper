@@ -24,8 +24,8 @@ class BookSearch extends React.Component {
       }
       return singleBook;
     });
-    console.log(formattedBooks)
     this.setState({ books: formattedBooks, bookStatus: '' });
+    console.log(formattedBooks);
   }
 
   handleSearch = (search) => {
