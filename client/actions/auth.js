@@ -5,6 +5,10 @@ const setUser = ( user = {} ) => {
   return {type: "LOGIN", user }
 }
 
+export const editUser = (boolean) => {
+  return { type: "EDIT_USER", boolean }
+}
+
 const logoutUser = () => {
   return { type: "LOGOUT" }
 }

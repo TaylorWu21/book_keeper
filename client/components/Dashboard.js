@@ -2,15 +2,8 @@ import React from 'react';
 import BookSearch from './BookSearch';
 import Profile from './Profile';
 import { connect } from 'react-redux';
-import { updateUser } from '../actions/auth';
 
 class Dashboard extends React.Component {
-
-  handleUpdate = (user) => {
-    debugger;
-    const { email, name, phone, avatar_url } = user;
-    this.props.dispatch(updateUser(email, name, phone, avatar_url));
-  }
 
   render() {
     return(
@@ -26,6 +19,7 @@ class Dashboard extends React.Component {
     )
   }
 }
+
 const mapStateToProps = (state) => {
   return { auth: state.auth }
 }
