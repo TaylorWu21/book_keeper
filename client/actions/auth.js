@@ -67,7 +67,7 @@ export const refreshLogin = () => {
 export const logout = () => {
   return (dispatch) => {
     $.ajax({
-      url: '/users/sign_out',
+      url: 'users/sign_out',
       type: 'DELETE'
     }).done( () => {
       dispatch(setFlash('You have logged out', 'info'));
@@ -76,6 +76,23 @@ export const logout = () => {
     }).fail( () => {
       dispatch(logoutUser());
       browserHistory.push('/');
+    })
+  }
+}
+
+export const updateUser = (email, name, phone, avatar_url) => {
+  return (dispatch) => {
+    $.ajax({
+      url: 'api/user',
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { user: { email, name, phone, avatar_url } }
+    }).done( user => {
+      dispatch(setFlash('Updated user information', 'success'));
+      dispatch(setUser(user));
+      browserHistory.push('/dashboard');
+    }).fail( data => {
+      console.log(data);
     })
   }
 }

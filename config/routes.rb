@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'user', to: 'users#index'
+    put 'user', to: 'users#update'
     get 'books', to: 'books#index'
     post 'book', to: 'books#create'
     delete 'book/:id', to: 'books#destroy'

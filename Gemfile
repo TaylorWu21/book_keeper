@@ -39,6 +39,7 @@ gem 'materialize-sass', '~> 0.97.8'
 gem 'repack', '~> 2.2', '>= 2.2.1'
 gem 'devise', '~> 4.2'
 gem 'foreman', '~> 0.83.0'
+gem 'dotenv-rails', groups: [:development, :test]
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
