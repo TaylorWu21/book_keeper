@@ -1,13 +1,29 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
-import { editUser } from '../actions/auth';
+import { setUser, editUser } from '../actions/auth';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 
 class UserEdit extends React.Component {
+
+  onDrop = (acceptedFiles, rejectedFiles) => {
+    let req = request.post('api/user_avatar');
+    acceptedFiles.forEach( file => {
+      req.attach('avatar', file);
+    });
+    req.end((err, user) => {
+      this.props.dispatch(setUser(user));
+    });
+  }
+
   render() {
     return(
       <div>
         <img src={this.props.user.avatar_url} style={{height: '200px', paddingTop: '40px'}}  />
+        <Dropzone onDrop={this.onDrop}>
+          <div>Click or drop image</div>
+        </Dropzone>
         <form className='row' onSubmit={this.props.handleSubmit}>
           <div className="col s12">
             <label htmlFor="email">Email</label>
