@@ -17,6 +17,10 @@ class Api::BooksController < ApplicationController
     @book.destroy
   end
 
+  def user_library
+    render json: { books: User.find(params[:id]).books, user: User.find(params[:id]) }
+  end
+
   private
 
   def book_params

@@ -32,10 +32,10 @@ export default (
       <Route path='/contact' component={Contact} />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={Signup} />
+      <Route path='/users/:id' component={UserIsAuthenticated(UserLibrary)} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
       <Route path='/library' component={UserIsAuthenticated(Library)} />
       <Route path='/users' component={UserIsAuthenticated(Users)} />
-      <Route path='/users/:id' component={UserLibrary} />
     </Route>
     <Route path="*" status={404} component={NoMatch}/>
   </Route>

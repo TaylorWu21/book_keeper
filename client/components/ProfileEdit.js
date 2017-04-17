@@ -13,17 +13,16 @@ class ProfileEdit extends React.Component {
       req.attach('avatar', file);
     });
     req.end((err, user) => {
-      debugger;
       this.props.dispatch(setUser(user.body));
     });
   }
 
   render() {
     return(
-      <div>
-        <img src={this.props.user.avatar_url} style={{height: '200px', paddingTop: '40px'}}  />
+      <div className='row'>
         <div className='center'>
-          <Dropzone onDrop={this.onDrop}>
+          <img className='profile-img' src={this.props.user.avatar_url} />
+          <Dropzone onDrop={this.onDrop} className='dropzone'>
             <div>Click or drop image</div>
           </Dropzone>
         </div>

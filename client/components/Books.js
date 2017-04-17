@@ -33,8 +33,7 @@ class Books extends React.Component {
           />
         );
       });
-    }
-    if(parent === 'library') {
+    } else if(parent === 'library') {
       books = this.props.books.map( (book, i) => {
         return(
           <Book
@@ -51,6 +50,10 @@ class Books extends React.Component {
           />
         );
       });
+    } else {
+      return(
+        <div>loading...</div>
+      )
     }
     return(
       <ul className='collection'>

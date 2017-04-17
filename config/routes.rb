@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'all_users', to: 'users#all_users'
 
     get 'books', to: 'books#index'
+    get 'books/:id', to: 'books#user_library'
     post 'book', to: 'books#create'
     delete 'book/:id', to: 'books#destroy'
   end

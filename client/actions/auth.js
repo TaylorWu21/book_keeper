@@ -16,7 +16,7 @@ const logoutUser = () => {
 export const loginUser = (email, password) => {
   return (dispatch) => {
     $.ajax({
-      url: 'users/sign_in',
+      url: '/users/sign_in',
       type: 'POST',
       dataType: 'JSON',
       data: { user: { email, password } }
@@ -34,7 +34,7 @@ export const loginUser = (email, password) => {
 export const SignupUser = (email, name, phone, password) => {
   return (dispatch) => {
     $.ajax({
-      url: 'users',
+      url: '/users',
       type: 'POST',
       dataType: 'JSON',
       data: { user: { email, name, phone, password } }
@@ -51,7 +51,7 @@ export const SignupUser = (email, name, phone, password) => {
 export const refreshLogin = () => {
   return (dispatch) => {
     $.ajax({
-      url: 'api/user',
+      url: '/api/user',
       type: 'GET',
       datatype: 'JSON'
     }).done( user => {
@@ -71,7 +71,7 @@ export const refreshLogin = () => {
 export const logout = () => {
   return (dispatch) => {
     $.ajax({
-      url: 'users/sign_out',
+      url: '/users/sign_out',
       type: 'DELETE'
     }).done( () => {
       dispatch(setFlash('You have logged out', 'info'));
@@ -87,7 +87,7 @@ export const logout = () => {
 export const updateUser = (email, name, phone, avatar_url) => {
   return (dispatch) => {
     $.ajax({
-      url: 'api/user',
+      url: '/api/user',
       type: 'PUT',
       dataType: 'JSON',
       data: { user: { email, name, phone, avatar_url } }

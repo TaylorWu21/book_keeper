@@ -65,7 +65,7 @@ class Navbar extends React.Component {
       <nav>
         <div className="nav-wrapper">
           <a href="/" className="brand-logo">Book Keeper</a>
-          <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={29}/></a>
+          <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={30}/></a>
           <ul className="right hide-on-med-and-down">
             { this.links() }
             { this.authLink() }

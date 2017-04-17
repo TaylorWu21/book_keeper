@@ -32,7 +32,7 @@ const Flash = ({ flash, dispatch }) => {
         onClick={ () => dispatch(clearFlash()) }>
         <div className='flashCont'>
           <a className='pointer closeFlash grey-text text-darken-2'>&times;</a>
-          {flash.message}
+          { flash.message }
           { fadeFlash(dispatch) }
         </div>
       </div>

@@ -9,7 +9,11 @@ class Library extends React.Component {
   }
 
   render() {
-    if(this.props.books) return(<Books books={this.props.books} parent='library' />);
+    if(this.props.books) {
+      return(
+        <Books books={this.props.books} parent='library' />
+      );
+    }
   }
 }
 

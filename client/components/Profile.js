@@ -17,7 +17,7 @@ class Profile extends React.Component {
     const user = this.props.user;
     // CHANGE IT SO IT USES THE REDUX STORE TO CHECK IF EDITING 
     return(
-      <div className='center'>
+      <div>
         { this.props.user.editing? 
           <ProfileEdit onSubmit={this.handleUpdate} /> 
           : 

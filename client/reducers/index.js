@@ -5,6 +5,8 @@ import auth from './auth';
 import books from './books';
 import flash from './flash';
 import users from './users';
+import otherUser from './otherUser';
+import otherBooks from './otherBooks';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -12,6 +14,8 @@ const rootReducer = combineReducers({
   books,
   flash,
   users,
+  otherUser,
+  otherBooks,
   form: formReducer
 });
 
