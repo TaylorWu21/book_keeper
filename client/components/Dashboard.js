@@ -14,7 +14,6 @@ class Dashboard extends React.Component {
         <div className='col s12 m9'>
           <BookSearch />
         </div>
-        dashboard component
       </div>
     )
   }

@@ -11,14 +11,18 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Library from './components/Library';
+import Users from './components/Users';
+import UserLibrary from './components/UserLibrary';
 
-// FIX AUTH
+// TODO: FIX AUTH
 const UserIsAuthenticated = UserAuthWrapper({
   authSelector: state => state.auth,
   predicate: auth => auth.isAuthenticated,
   redirectAction: routerActions.replace,
   wrapperDisplayName: "UserIsAuthenticated"
 });
+
+// TODO: ADD USER ROUTES FOR AUTHENTICATION
 
 export default (
   <Route>
@@ -30,6 +34,8 @@ export default (
       <Route path='/signup' component={Signup} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
       <Route path='/library' component={UserIsAuthenticated(Library)} />
+      <Route path='/users' component={UserIsAuthenticated(Users)} />
+      <Route path='/users/:id' component={UserLibrary} />
     </Route>
     <Route path="*" status={404} component={NoMatch}/>
   </Route>

@@ -7,60 +7,91 @@ import { logout } from '../actions/auth';
 class Navbar extends React.Component {
 
   componentDidMount() {
-    $(".button-collapse").sideNav();
+    $(".button-collapse").sideNav({
+      menuWidth: 300,
+      closeOnClick: true,
+      draggable: true
+    });
   }
 
-  logout = (e) => {
-		e.preventDefault();
-		this.props.dispatch(logout());
-	}
+  link = (i, name, path) => {
+    let activeClass = this.props.location.pathname === path ? 'active' : '';
+    return(
+      <li key={i} className={activeClass}>
+        <Link to={path}>{name}</Link>
+      </li>
+    )
+  }
 
-	authLink() {
-		if(Object.keys(this.props.auth).length > 1)
-			return(
-				[
-				  <li key='auth-link-0'><Link to="/dashboard">Dashboard</Link></li>,
-				  <li key='auth-link-1'><Link to="/library">library</Link></li>,
-				  <li key='auth-link-2'><a href='#' onClick={this.logout}>Logout</a></li>
-				]
-			)
-	  else
-	  	return(
-        [
-          <li key='auth-link-0'><Link to="/login">Login</Link></li>,
-          <li key='auth-link-1'><Link to="/signup">Sign Up</Link></li>
-        ]
+  links = () => {
+    // Unauthenticated Routes
+    return [
+
+    ].map( (link, i) => {
+      return this.link(i, link.name, link.path);
+    })
+  }
+
+	authLink = () => {
+		if(Object.keys(this.props.auth).length > 1) {
+      let links = [
+        { name: 'Dashboard', path: '/dashboard' },
+        { name: 'Library', path: '/library' },
+        { name: 'All Users', path: '/users' }
+      ].map( (link, i) => {
+        return this.link(i, link.name, link.path);
+      });
+      links.push(
+        <li key='logout'>
+          <a href='#' onClick={ (e) => this.props.dispatch(logout())}>
+            Logout
+          </a>
+        </li>
       )
+      return links;
+    } else {
+      return [
+        { name: 'Log In', path: '/login' },
+        { name: 'Sign Up', path: '/signup' }
+      ].map( (link, i) => {
+        return this.link(i, link.name, link.path);
+      });
+    }
 	}
 
 	render() {
-		return(
-			<header>
-			  <div className="navbar-fixed">
-				  <nav>
-				    <div className="nav-wrapper">
-				      <Link to='/' className='brand-logo'>Book Keeper</Link>
-              <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={29}/></a>
-				      <ul className="right hide-on-med-and-down">
-				        <li><Link to="/">Home</Link></li>
-				        <li><Link to="/about">About</Link></li>
-				        <li><Link to="/contact">Contact</Link></li>
-				        { this.authLink() }
-				      </ul>
-				      <ul className="side-nav" id="mobile-demo">
-				        <li><Link to="/">Home</Link></li>
-				        <li><Link to="/about">About</Link></li>
-				        <li><Link to="/contact">Contact</Link></li>
-				        { this.authLink() }
-				      </ul>
-				    </div>
-				  </nav>
-				</div>
-			</header>
-		)
+    const user = this.props.auth;
+    return(
+      <nav>
+        <div className="nav-wrapper">
+          <a href="/" className="brand-logo">Book Keeper</a>
+          <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={29}/></a>
+          <ul className="right hide-on-med-and-down">
+            { this.links() }
+            { this.authLink() }
+          </ul>
+          <ul className="side-nav" id="mobile-demo">
+            {
+              Object.keys(user).length > 1? 
+                <li><div className="userView">
+                  <div className="background">
+                    <img src="https://res.cloudinary.com/taylorwu21/image/upload/v1492371686/sample.jpg" />
+                  </div>
+                    <a href="#!user"><img className="circle" src={user.avatar_url} /></a>
+                    <a href="#!name"><span className="white-text name">{user.name}</span></a>
+                    <a href="#!email"><span className="white-text email">{user.email}</span></a>
+                </div></li>
+              : 
+                <li className='black-text'>Nope</li>
+            }
+            { this.authLink() }
+            <li><div className="divider"></div></li>
+            { this.links() }
+          </ul>
+        </div>
+      </nav>
+    );
 	}
 }
-
-
 
 export default connect()(Navbar);

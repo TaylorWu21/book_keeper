@@ -5,7 +5,7 @@ import { setUser, editUser } from '../actions/auth';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 
-class UserEdit extends React.Component {
+class ProfileEdit extends React.Component {
 
   onDrop = (acceptedFiles, rejectedFiles) => {
     let req = request.post('api/user_avatar');
@@ -13,7 +13,8 @@ class UserEdit extends React.Component {
       req.attach('avatar', file);
     });
     req.end((err, user) => {
-      this.props.dispatch(setUser(user));
+      debugger;
+      this.props.dispatch(setUser(user.body));
     });
   }
 
@@ -21,9 +22,11 @@ class UserEdit extends React.Component {
     return(
       <div>
         <img src={this.props.user.avatar_url} style={{height: '200px', paddingTop: '40px'}}  />
-        <Dropzone onDrop={this.onDrop}>
-          <div>Click or drop image</div>
-        </Dropzone>
+        <div className='center'>
+          <Dropzone onDrop={this.onDrop}>
+            <div>Click or drop image</div>
+          </Dropzone>
+        </div>
         <form className='row' onSubmit={this.props.handleSubmit}>
           <div className="col s12">
             <label htmlFor="email">Email</label>
@@ -45,15 +48,15 @@ class UserEdit extends React.Component {
   }
 }
 
-UserEdit = reduxForm({
+ProfileEdit = reduxForm({
   form: 'editUser'
-})(UserEdit);
+})(ProfileEdit);
 
-UserEdit = connect(
+ProfileEdit = connect(
   state => ({
     user: state.auth,
     initialValues: state.auth
   })
-)(UserEdit);
+)(ProfileEdit);
 
-export default UserEdit;
+export default ProfileEdit;

@@ -31,6 +31,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def all_users
+    render json: User.where("id != #{current_user.id}").order(:name)
+  end
+
   private
 
   def user_params

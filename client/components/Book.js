@@ -4,10 +4,10 @@ const Book = (book) => {
   return(
   <li className='collection-item avatar row'>
     <div className='col s12 m2 center'>
-      <img src={book.image} alt='' />
+      <img src={book.image} alt='' style={{width: '150px'}}/>
       <p><b>ISBN-</b>{book.isbn}</p>
     </div>
-    <div className='col s12 m10'>
+    <div className='col s12 m9 offset-m1'>
       <div className='center'>
         <span className='title'>
           <b>Title:</b> {book.title}

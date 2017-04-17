@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     get 'user', to: 'users#index'
     put 'user', to: 'users#update'
     post 'user_avatar', to: 'users#update_avatar'
+
+    get 'all_users', to: 'users#all_users'
+
     get 'books', to: 'books#index'
     post 'book', to: 'books#create'
     delete 'book/:id', to: 'books#destroy'

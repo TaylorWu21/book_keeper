@@ -2,8 +2,8 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { updateUser } from '../actions/auth';
-import UserInfo from './UserInfo';
-import UserEdit from './UserEdit';
+import ProfileInfo from './ProfileInfo';
+import ProfileEdit from './ProfileEdit';
 
 class Profile extends React.Component {
 
@@ -17,11 +17,11 @@ class Profile extends React.Component {
     const user = this.props.user;
     // CHANGE IT SO IT USES THE REDUX STORE TO CHECK IF EDITING 
     return(
-      <div>
+      <div className='center'>
         { this.props.user.editing? 
-          <UserEdit onSubmit={this.handleUpdate} /> 
+          <ProfileEdit onSubmit={this.handleUpdate} /> 
           : 
-          <UserInfo user={this.props.user} dispatch={this.props.dispatch} /> 
+          <ProfileInfo user={this.props.user} dispatch={this.props.dispatch} /> 
         }
       </div>
     );
