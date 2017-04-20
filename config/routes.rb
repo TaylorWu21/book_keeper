@@ -3,16 +3,24 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :api do
+    # User Routes
     get 'user', to: 'users#index'
     put 'user', to: 'users#update'
     post 'user_avatar', to: 'users#update_avatar'
 
     get 'all_users', to: 'users#all_users'
 
+    # Book Routes
     get 'books', to: 'books#index'
     get 'books/:id', to: 'books#user_library'
     post 'book', to: 'books#create'
     delete 'book/:id', to: 'books#destroy'
+
+    # Comment Routes
+    get 'books/:book_id/comments', to: 'comments#index'
+    post 'books/:book_id/comments', to: 'comments#create'
+    put 'comments/:comment_id', to: 'comments#update'
+    delete 'comments/:comment_id', to: 'comments#destroy'
   end
 
   devise_for :users, controllers: {

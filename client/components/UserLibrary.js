@@ -7,6 +7,7 @@ class UserLibrary extends React.Component {
   componentDidMount() {
     this.props.dispatch(getUserLibrary(this.props.params.id));
   }
+  
   render() {
     if(this.props.books) {
       const { user, books } = this.props
@@ -19,7 +20,7 @@ class UserLibrary extends React.Component {
             <p><b>Phone:</b> {user.phone}</p>
           </div>
           <div className='col s12 m9'>
-            <Books books={books} parent='search' />
+            <Books books={books} parent='othersLibrary' />
           </div>
         </div>
       )

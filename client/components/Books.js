@@ -14,47 +14,18 @@ class Books extends React.Component {
   }
 
   render() {
-    // TODO MAKE BOOKS COMPONENT WORK WITH LIBRARY COMPONENT AS WELL
-    let books;
-    const { parent } = this.props;
-    if(parent === 'search') {
-      books = this.props.books.map( (book, i) => {
-        return(
-          <Book
-            key={i}
-            title={book.title}
-            author={book.author}
-            description={book.description}
-            image={book.image}
-            category={book.category}
-            isbn={book.isbn}
-            saveBook={this.saveBook}
-            parent={this.props.parent}
-          />
-        );
-      });
-    } else if(parent === 'library') {
-      books = this.props.books.map( (book, i) => {
-        return(
-          <Book
-            key={i}
-            id={book.id}
-            title={book.title}
-            author={book.author}
-            description={book.description}
-            image={book.image}
-            category={book.category}
-            isbn={book.isbn}
-            deleteBook={this.deleteBook}
-            parent={this.props.parent}
-          />
-        );
-      });
-    } else {
+    const books = this.props.books.map( book => {
       return(
-        <div>loading...</div>
+        <Book
+          key={book.id}
+          book={book}
+          parent={this.props.parent}
+          deleteBook={this.deleteBook}
+          saveBook={this.saveBook}
+        />
       )
-    }
+    })
+
     return(
       <ul className='collection'>
         {books}

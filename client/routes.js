@@ -13,6 +13,7 @@ import Signup from './components/Signup';
 import Library from './components/Library';
 import Users from './components/Users';
 import UserLibrary from './components/UserLibrary';
+import UserBook from './components/UserBook';
 
 // TODO: FIX AUTH
 const UserIsAuthenticated = UserAuthWrapper({
@@ -33,6 +34,7 @@ export default (
       <Route path='/login' component={Login} />
       <Route path='/signup' component={Signup} />
       <Route path='/users/:id' component={UserIsAuthenticated(UserLibrary)} />
+      <Route path='/books/:book_id' component={UserIsAuthenticated(UserBook)} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
       <Route path='/library' component={UserIsAuthenticated(Library)} />
       <Route path='/users' component={UserIsAuthenticated(Users)} />
