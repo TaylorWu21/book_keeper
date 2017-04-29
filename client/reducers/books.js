@@ -11,6 +11,13 @@ const books = (state = [], action) => {
         if(book.id !== action.id) return book;
       });
       break;
+    case "SEARCH_BOOKS":
+      return state.filter( book => {
+          if(book.title.toLowerCase().includes(action.search.toLowerCase()) || 
+            book.author.toLowerCase().includes(action.search.toLowerCase())
+          ) return true;
+        })
+      breal;
     default:
       return state;
       break;

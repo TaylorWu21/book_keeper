@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getComments, addComment, updateComment } from '../actions/comments';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
-import CommentEdit from './CommentEdit';
 
 class UserBook extends React.Component {
   state = ({ editingComment: false });

@@ -62,3 +62,7 @@ export const deleteBook = (id) => {
     })
   }
 }
+
+export const searchBooks = (search) => {
+  return { type: "SEARCH_BOOKS", search }
+}
