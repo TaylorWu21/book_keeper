@@ -13,8 +13,9 @@ class BookSearch extends React.Component {
         book.volumeInfo.authors &&
         book.volumeInfo.industryIdentifiers) return true;
     })
-    let formattedBooks = filteredBooks.map( book => {
-      let singleBook = { 
+    let formattedBooks = filteredBooks.map( (book, i) => {
+      let singleBook = {
+        id: i,
         title: book.volumeInfo.title,
         author: book.volumeInfo.authors[0],
         description: book.volumeInfo.description,
@@ -25,7 +26,6 @@ class BookSearch extends React.Component {
       return singleBook;
     });
     this.setState({ books: formattedBooks, bookStatus: '' });
-    console.log(formattedBooks);
   }
 
   handleSearch = (search) => {

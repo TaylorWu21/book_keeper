@@ -1,15 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getComments } from '../actions/comments';
+import { getComments, addComment, updateComment } from '../actions/comments';
+import Comment from './Comment';
+import CommentForm from './CommentForm';
+import CommentEdit from './CommentEdit';
 
 class UserBook extends React.Component {
+  state = ({ editingComment: false });
+
   componentDidMount() {
     $('.modal').modal();
     this.props.dispatch(getComments(this.props.params.book_id));
   }
 
+  handleSubmitComment = (comment) => {
+    this.props.dispatch(addComment(comment.comment, this.props.book.id, this.props.auth.id));
+  }
+
+  updateComment = (id, message) => {
+    this.props.dispatch(updateComment(id, message));
+  }
+
   render() {
     let { book, comments, user } = this.props;
+    const allComments = comments.map(comment => {
+      return( <Comment key={comment.comment_id} comment={comment} updateComment={this.updateComment} />);
+    });
     return(
       <div className='row'>
         <div className='center col s12 m3'>
@@ -41,31 +57,27 @@ class UserBook extends React.Component {
               </div>
             </li>
           </ul>
-          <h2>Comments</h2>
-          <ul className='collection'>
-            { !comments.length > 0? <li className='collection-item'>No Comments</li> : null }
-          </ul>
-          <a className="waves-effect waves-light btn" href="#modal1">Add Comment</a>
-        </div>
-        <div id="modal1" className="modal">
-          <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div className="modal-footer">
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+          <div className='container'>
+            <h2>Comments</h2>
+            <ul className='collection'>
+              { !comments.length > 0 ? <li className='collection-item'>No Comments</li> : allComments }
+            </ul>
+            <a className="waves-effect waves-light btn" href="#modalNew">Add Comment</a>
           </div>
         </div>
+        <CommentForm onSubmit={this.handleSubmitComment} />
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  return { 
+  return {
+    auth: state.auth, 
     book: state.book,
     comments: state.comments,
-    user: state.otherUser
+    user: state.otherUser,
+    comment: state.comment
   }
 }
 

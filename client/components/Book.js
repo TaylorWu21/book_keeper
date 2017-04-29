@@ -4,13 +4,14 @@ import { Link } from 'react-router';
 class Book extends React.Component {
 
   buttonActions = (actions) => {
+    const { book, saveBook, deleteBook } = this.props;
     switch(actions) {
       case "search":
         return(
           <button 
             href='#' 
             className='secondary-content btn'
-            onClick={() => book.saveBook(
+            onClick={ () => saveBook(
               book.title, 
               book.author, 
               book.description,
@@ -27,7 +28,7 @@ class Book extends React.Component {
           <button
             href='#'
             className='secondary-content btn'
-            onClick={ () => book.deleteBook(book.id)}
+            onClick={ () => deleteBook(book.id)}
           >
             Delete Book
           </button>
@@ -38,7 +39,7 @@ class Book extends React.Component {
             <button 
               href='#' 
               className='secondary-content btn'
-              onClick={() => book.saveBook(
+              onClick={() => saveBook(
                 book.title, 
                 book.author, 
                 book.description,
@@ -49,7 +50,7 @@ class Book extends React.Component {
             >
               Add Book
             </button>
-            <Link className='secondary-content btn red' to={`/books/${this.props.book.id}`}>Add Comment</Link>
+            <Link className='secondary-content btn red' to={`/books/${book.id}`}>Add Comment</Link>
           </div>
         );
       default:

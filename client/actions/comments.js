@@ -14,3 +14,34 @@ export const getComments = (book_id) => {
     })
   }
 }
+
+export const addComment = (message, book_id, user_id) => {
+  return (dispatch) => {
+    $.ajax({
+      url: `/api/books/${book_id}/comments`,
+      type: 'POST',
+      dataType: 'JSON',
+      data: { comment: { user_id, message } }
+    }).done( comment => {
+      dispatch({ type: 'ADD_COMMENT', comment });
+      console.log(comment)
+    }).fail( data => {
+      console.log(data);
+    })
+  }
+}
+
+export const updateComment = (id, message) => {
+  return (dispatch) => {
+    $.ajax({
+      url: `/api/comments/${id}`,
+      type: 'PUT',
+      dataType: 'JSON',
+      data: { comment: { message } }
+    }).done( comment => {
+      dispatch({ type: "UPDATE_COMMENT", comment});
+    }).fail( data => {
+      console.log(data);
+    });
+  }
+}
