@@ -14,7 +14,9 @@ const books = (state = [], action) => {
     case "SEARCH_BOOKS":
       return state.filter( book => {
           if(book.title.toLowerCase().includes(action.search.toLowerCase()) || 
-            book.author.toLowerCase().includes(action.search.toLowerCase())
+            book.author.toLowerCase().includes(action.search.toLowerCase()) ||
+            book.category.toLowerCase().includes(action.search.toLowerCase()) ||
+            book.isbn.toLowerCase().includes(action.search.toLowerCase())
           ) return true;
         })
       breal;
