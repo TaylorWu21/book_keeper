@@ -1,12 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getUsers } from '../actions/users';
+import { getUsers, searchUsers } from '../actions/users';
 import User from './User';
 
 class Users extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getUsers());
+  }
+
+  handleSearch = () => {
+    const search = this.refs.search.value;
+    if(search === '')
+      this.props.dispatch(getUsers());
+    else
+      this.props.dispatch(searchUsers(search));
   }
 
   render() {
@@ -17,7 +25,11 @@ class Users extends React.Component {
     });
     return(
       <div>
-        <h1>Other Users</h1>
+        <h1>View Other's Library</h1>
+        <div className='input-field'>
+          <label htmlFor="search">Search for name or email</label>
+          <input id='search' type='text' ref='search' onChange={this.handleSearch} />
+        </div>
         <ul className='collection'>
           {users}
         </ul>

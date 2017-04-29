@@ -10,3 +10,7 @@ export const getUsers = () => {
     });
   }
 }
+
+export const searchUsers = (search) => {
+  return { type: "SEARCH_USERS", search }
+}
