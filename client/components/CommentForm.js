@@ -10,7 +10,7 @@ const CommentForm = (props) => {
           <div>
             <label>Comment</label>
             <div>
-              <Field name="comment" component="input" type="text" placeholder="Comment" />
+              <Field name="message" component="input" type="text" placeholder="Comment" />
             </div>
           </div>
         </div>

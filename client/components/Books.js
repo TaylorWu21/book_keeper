@@ -5,11 +5,13 @@ import { saveBook, deleteBook } from '../actions/books';
 
 class Books extends React.Component {
 
-  saveBook = (title, author, description, image, category, isbn) => {
+  saveBook = (title, author, description, image, category, isbn, e) => {
+    e.stopPropagation();
     this.props.dispatch(saveBook(title, author, description, image, category, isbn));
   }
 
-  deleteBook = (id) => {
+  deleteBook = (id, e) => {
+    e.stopPropagation();
     this.props.dispatch(deleteBook(id));
   }
 
@@ -27,7 +29,7 @@ class Books extends React.Component {
     })
 
     return(
-      <ul className='collection'>
+      <ul className='collapsible popout' data-collapsible="accordion">
         {books}
       </ul>
     )

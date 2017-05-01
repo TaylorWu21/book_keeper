@@ -4,7 +4,7 @@ const comments = ( state = [], action) => {
       return action.comments;
       break;
     case "ADD_COMMENT":
-      return [state, ...action.comment];
+      return [...state, action.comment];
       break;
     case "UPDATE_COMMENT":
       return state.map( comment => {

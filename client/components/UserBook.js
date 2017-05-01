@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getComments, addComment, updateComment, deleteComment } from '../actions/comments';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+import FaCommenting from 'react-icons/lib/fa/commenting';
 
 class UserBook extends React.Component {
   state = ({ editingComment: false });
@@ -13,7 +14,7 @@ class UserBook extends React.Component {
   }
 
   handleSubmitComment = (comment) => {
-    this.props.dispatch(addComment(comment.comment, this.props.book.id, this.props.auth.id));
+    this.props.dispatch(addComment(comment.message, this.props.book.id, this.props.auth.id));
   }
 
   updateComment = (id, message) => {
@@ -26,11 +27,12 @@ class UserBook extends React.Component {
 
   render() {
     let { book, comments, user } = this.props;
+    console.log(comments);
     const allComments = comments.map(comment => {
       return( 
         <Comment 
-          key={comment.comment_id} 
-          comment={comment} 
+          key={comment.comment_id}
+          comment={comment}
           updateComment={this.updateComment} 
           deleteComment={this.deleteComment}
         />
@@ -72,7 +74,7 @@ class UserBook extends React.Component {
             <ul className='collection'>
               { !comments.length > 0 ? <li className='collection-item'>No Comments</li> : allComments }
             </ul>
-            <a className="waves-effect waves-light btn" href="#modalNew">Add Comment</a>
+            <a className="waves-effect waves-green btn" href="#modalNew"><FaCommenting size={30} /></a>
           </div>
         </div>
         <CommentForm onSubmit={this.handleSubmitComment} />

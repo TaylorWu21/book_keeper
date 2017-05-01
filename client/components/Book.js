@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router';
+import FaBook from 'react-icons/lib/fa/book';
+import MdAddBox from 'react-icons/lib/md/add-box';
+import MdComment from 'react-icons/lib/md/comment';
+import FaTrash from 'react-icons/lib/fa/trash';
 
 class Book extends React.Component {
+
+  componentWillMount() {
+    $('.collapsible').collapsible();
+  }
 
   buttonActions = (actions) => {
     const { book, saveBook, deleteBook } = this.props;
@@ -10,47 +18,54 @@ class Book extends React.Component {
         return(
           <button 
             href='#' 
-            className='secondary-content btn'
-            onClick={ () => saveBook(
+            className='waves-effect waves-green btn-flat'
+            onClick={ (e) => saveBook(
               book.title, 
               book.author, 
               book.description,
               book.image,
               book.category,
-              book.isbn
+              book.isbn,
+              e
             )}
           >
-            Add Book
+            <MdAddBox size={30} />
           </button>
         );
       case "library":
         return(
-          <button
-            href='#'
-            className='secondary-content btn'
-            onClick={ () => deleteBook(book.id)}
-          >
-            Delete Book
-          </button>
+          <div>
+            <button
+              className='waves-effect waves-red btn-flat'
+              onClick={ (e) => deleteBook(book.id, e)}
+            >
+              <FaTrash size={30} />
+            </button>
+            <Link className='waves-effect waves-blue btn-flat' to={`/books/${book.id}`}>
+              <MdComment size={30} />
+            </Link>
+          </div>
         );
       case "othersLibrary":
         return(
           <div>
             <button 
-              href='#' 
-              className='secondary-content btn'
-              onClick={() => saveBook(
+              className='waves-effect waves-green btn-flat'
+              onClick={ (e) => saveBook(
                 book.title, 
                 book.author, 
                 book.description,
                 book.image,
                 book.category,
-                book.isbn
+                book.isbn,
+                e
               )}
             >
-              Add Book
+              <MdAddBox size={30} />
             </button>
-            <Link className='secondary-content btn red' to={`/books/${book.id}`}>Add Comment</Link>
+            <Link className='waves-effect waves-blue btn-flat' to={`/books/${book.id}`}>
+              <MdComment size={30} />
+            </Link>
           </div>
         );
       default:
@@ -62,27 +77,32 @@ class Book extends React.Component {
 
   render() {
     const book = this.props.book;
-    // if(this.props.)
     return(
-      <li className='collection-item avatar row'>
-        <div className='col s12 m2 center'>
-          <img src={book.image} alt='' style={{width: '150px'}}/>
-          <p><b>ISBN-</b>{book.isbn}</p>
-        </div>
-        <div className='col s12 m9 offset-m1'>
-          <div className='center'>
-            <span className='title'>
-              <b>Title:</b> {book.title}
-              <br />
-              <b>Category:</b> {book.category}
-            </span>
+      <li>
+        <div className="collapsible-header">
+          <FaBook size={30} /> {book.title}
+          <div className='right'>
+            { this.buttonActions(this.props.parent) }
           </div>
-          <p>
-            <b>Author:</b> {book.author}
-            <br />
-            <b>Description:</b> {book.description}
-          </p>
-        { this.buttonActions(this.props.parent) }
+        </div>
+        <div className="collapsible-body row">
+          <div className='col s12 m2 offset-m1 center'>
+            <img src={book.image} alt='' style={{width: '150px', paddingTop: '20px'}}/>
+            <p><b>ISBN-</b>{book.isbn}</p>
+          </div>
+          <div className='col s12 m8 offset-m1'>
+            <div className='center'>
+              <span className='title'>
+                <b>Category:</b> {book.category}
+              </span>
+            </div>
+            <p>
+              <b>Author:</b> {book.author}
+              <br />
+              <b>Description:</b> {book.description}
+            </p>
+          
+          </div>
         </div>
       </li>
     )

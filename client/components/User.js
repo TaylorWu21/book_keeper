@@ -15,7 +15,7 @@ const User = (user) => (
         <br />
         <b>Phone: </b><a href={`mailto:${user.phone}`}>{user.phone}</a>
       </p>
-      <Link to={`/users/${user.id}`}>SEE MY SHIT</Link>
+      <Link to={`/users/${user.id}`}>View Library</Link>
     </div>
   </li>
 )
