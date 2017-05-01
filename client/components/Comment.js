@@ -16,7 +16,7 @@ class Comment extends React.Component {
   }
 
   render() {
-    const comment = this.props.comment;
+    const { comment, deleteComment } = this.props;
     if(!this.state.editing) {
       return(
         <li key={comment.comment_id} className='collection-item avatar row'>
@@ -34,12 +34,20 @@ class Comment extends React.Component {
               }
             </p>
             { comment.user_id === this.props.auth.id ? 
-              <button 
-                onClick={ () => this.toggleEdit()} 
-                className='waves-effect waves-orange btn-flat blue-text'
-              >
-                Edit
-              </button>
+              <div>
+                <button 
+                  onClick={ () => this.toggleEdit() } 
+                  className='waves-effect waves-orange btn-flat blue-text'
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={ () => deleteComment(comment.comment_id) }
+                  className='waves-effect waves-red btn-flat blue-text'
+                >
+                  Delete
+                </button>
+              </div>
             : 
               null 
             }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getComments, addComment, updateComment } from '../actions/comments';
+import { getComments, addComment, updateComment, deleteComment } from '../actions/comments';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 
@@ -20,10 +20,21 @@ class UserBook extends React.Component {
     this.props.dispatch(updateComment(id, message));
   }
 
+  deleteComment = (id) => {
+    this.props.dispatch(deleteComment(id));
+  }
+
   render() {
     let { book, comments, user } = this.props;
     const allComments = comments.map(comment => {
-      return( <Comment key={comment.comment_id} comment={comment} updateComment={this.updateComment} />);
+      return( 
+        <Comment 
+          key={comment.comment_id} 
+          comment={comment} 
+          updateComment={this.updateComment} 
+          deleteComment={this.deleteComment}
+        />
+      );
     });
     return(
       <div className='row'>

@@ -14,6 +14,12 @@ const comments = ( state = [], action) => {
           return comment;
       });
       break;
+    case "DELETE_COMMENT":
+      return state.filter( comment => {
+        if(comment.comment_id !== action.id)
+          return true;
+      });
+      break;
     default:
       return state;
   }

@@ -23,8 +23,8 @@ export const addComment = (message, book_id, user_id) => {
       dataType: 'JSON',
       data: { comment: { user_id, message } }
     }).done( comment => {
+      dispatch(setFlash('Comment Added', 'success'));
       dispatch({ type: 'ADD_COMMENT', comment });
-      console.log(comment)
     }).fail( data => {
       console.log(data);
     })
@@ -39,9 +39,24 @@ export const updateComment = (id, message) => {
       dataType: 'JSON',
       data: { comment: { message } }
     }).done( comment => {
+      dispatch(setFlash('Comment Updated', 'success'));
       dispatch({ type: "UPDATE_COMMENT", comment});
     }).fail( data => {
       console.log(data);
     });
+  }
+}
+
+export const deleteComment = (id) => {
+  return (dispatch) => {
+    $.ajax({
+      url: `/api/comments/${id}`,
+      type: 'DELETE'
+    }).done( () => {
+      dispatch(setFlash('Comment Deleted', 'success'));
+      dispatch({ type: 'DELETE_COMMENT', id });
+    }).fail( data => {
+      console.log(data);
+    })
   }
 }
