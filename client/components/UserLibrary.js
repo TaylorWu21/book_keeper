@@ -2,6 +2,7 @@ import React from 'react';
 import Books from './Books';
 import { connect } from 'react-redux';
 import { getUserLibrary } from '../actions/books';
+import UserInfo from './UserInfo';
 
 class UserLibrary extends React.Component {
   componentDidMount() {
@@ -13,12 +14,7 @@ class UserLibrary extends React.Component {
       const { user, books } = this.props
       return(
         <div className='row'>
-          <div className='col s12 m3 center'>
-            <img className='profile-img' src={user.avatar_url} />
-            <p><b>Email:</b> {user.email}</p>
-            <p><b>Name:</b> {user.name}</p>
-            <p><b>Phone:</b> {user.phone}</p>
-          </div>
+          <UserInfo user={user} />
           <div className='col s12 m9'>
             <Books books={books} parent='othersLibrary' />
           </div>

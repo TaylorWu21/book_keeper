@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     post 'books/:book_id/comments', to: 'comments#create'
     put 'comments/:comment_id', to: 'comments#update'
     delete 'comments/:comment_id', to: 'comments#destroy'
+
+    # Follower Routes
+    get '/followings', to: 'followers#index'
+    post '/following', to: 'followers#create'
+    delete 'following/:follow_id', to: 'followers#destroy'
   end
 
   devise_for :users, controllers: {

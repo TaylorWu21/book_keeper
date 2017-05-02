@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getComments, addComment, updateComment, deleteComment } from '../actions/comments';
+import UserInfo from './UserInfo';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
 import FaCommenting from 'react-icons/lib/fa/commenting';
@@ -40,12 +41,7 @@ class UserBook extends React.Component {
     });
     return(
       <div className='row'>
-        <div className='center col s12 m3'>
-          <img className='profile-img' src={user.avatar_url} />
-          <p><b>Email:</b> {user.email}</p>
-          <p><b>Name:</b> {user.name}</p>
-          <p><b>Phone:</b> {user.phone}</p>
-        </div>
+        <UserInfo user={user} />
         <div className='col s12 m9'>
           <ul className='collection'>
             <li className='collection-item avatar row'>
