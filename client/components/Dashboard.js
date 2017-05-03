@@ -12,10 +12,10 @@ class Dashboard extends React.Component {
         <div className='col s12 m3'>
           <Profile user={this.props.auth} onSubmit={this.handleUpdate} />
         </div>
-        <div className='col s12 m7'>
+        <div className='col s12 m6'>
           <BookSearch />
         </div>
-        <div className='col s12 m2'>
+        <div className='col s12 m3'>
           <Follow />
         </div>
       </div>

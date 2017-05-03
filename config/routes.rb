@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get '/followings', to: 'followers#index'
     post '/following', to: 'followers#create'
     delete 'following/:follow_id', to: 'followers#destroy'
+    get '/followers', to: 'followers#get_followers'
   end
 
   devise_for :users, controllers: {

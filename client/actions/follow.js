@@ -43,3 +43,16 @@ export const deleteFollowing = (followId) => {
     });
   }
 }
+
+export const getFollowers = () => {
+  return (dispatch) => {
+    $.ajax({
+      url: '/api/followers',
+      type: 'GET'
+    }).done( followers => {
+      dispatch({ type: "GET_FOLLOWERS", followers})
+    }).fail( data => {
+      console.log(data);
+    })
+  }
+}

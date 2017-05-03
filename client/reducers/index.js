@@ -10,6 +10,7 @@ import otherBooks from './otherBooks';
 import book from './book';
 import comments from './comments';
 import following from './following';
+import followers from './followers';
 
 const rootReducer = combineReducers({
   routing: routerReducer,
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   book,
   comments,
   following,
+  followers,
   form: formReducer
 });
 
