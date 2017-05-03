@@ -6,6 +6,7 @@ class Api::FollowersController < ApplicationController
       follow = {
         id: following.id,
         following_name: User.find(following.following_id).name,
+        following_avatar_url: User.find(following.following_id).avatar_url,
         following_id: following.following_id,
       }
       followings.push(follow)
@@ -23,7 +24,7 @@ class Api::FollowersController < ApplicationController
   end
 
   def destroy
-    Follower.find(params[:follow_id]).destroy
+    Follower.where(user_id: current_user.id, following_id: params[:follow_id]).first.destroy
   end
 
   private

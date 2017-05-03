@@ -8,7 +8,7 @@ const following = (state = [], action) => {
       break;
     case "DELETE_FOLLOWING":
       return state.filter( following => {
-        if(following.id !== action.id) return true;
+        if(following.following_id != action.followId) return true;
       });
       break;
     default:

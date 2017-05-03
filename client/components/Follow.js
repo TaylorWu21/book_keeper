@@ -11,7 +11,9 @@ class Follow extends React.Component {
   render() {
     const following = this.props.following.map( following => {
       return(
-        <Link key={following.id} to={`/users/${following.following_id}`}>{following.following_name}</Link>
+        <div>
+          <Link key={following.id} to={`/users/${following.following_id}`}>{following.following_name}</Link>
+        </div>
       );
     });
     return(

@@ -31,13 +31,13 @@ export const addFollowing = (following_id) => {
   }
 }
 
-export const deleteFollowing = (follow_id) => {
+export const deleteFollowing = (followId) => {
   return (dispatch) => {
     $.ajax({
-      url: `/api/following/${follow_id}`,
+      url: `/api/following/${followId}`,
       type: 'DELETE'
     }).done( () => {
-      dispatch({ type: "DELETE_FOLLOWING", follow_id })
+      dispatch({ type: "DELETE_FOLLOWING", followId })
     }).fail( data => {
       console.log(data);
     });

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getFollowings, addFollowing, deleteFollowing } from '../actions/follow';
+import FaUserPlus from 'react-icons/lib/fa/user-plus';
+import FaUserTimes from 'react-icons/lib/fa/user-times'
 
 class UserInfo extends React.Component {
 
@@ -8,14 +10,15 @@ class UserInfo extends React.Component {
     this.props.dispatch(getFollowings());
   }
 
-  followButton = () => {
+  isFollowing = () => {
+    let following_bool = false;
+    const user = this.props.user;
     this.props.followings.map( following => {
-      if(following.following_id === this.props.user.id) {
-        return(
-          <button className='btn'>UnFollow</button>
-        );
-      }
+      if(following.following_id == user.id) {
+        following_bool = true
+      };
     });
+    return following_bool;
   }
 
   render() {
@@ -26,13 +29,24 @@ class UserInfo extends React.Component {
         <p><b>Email:</b> {user.email}</p>
         <p><b>Name:</b> {user.name}</p>
         <p><b>Phone:</b> {user.phone}</p>
-        <button className='btn' onClick={ () => props.dispatch(addFollowing(user.id)) }>Follow</button>
+        {
+          this.isFollowing() ?
+            <button className='btn' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
+              <FaUserPlus size={25} />
+              &nbsp; UnFollow
+            </button>
+          :
+            <button className='btn' onClick={ () => this.props.dispatch(addFollowing(user.id)) }>
+              <FaUserPlus size={25} />
+              &nbsp; Follow
+            </button>
+        }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return { followings: state.following }
 }
 
