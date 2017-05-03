@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { getFollowings, getFollowers } from '../actions/follow';
 
 class Follow extends React.Component {
+  state = { followHeader: '' }
 
   componentDidMount() {
     this.props.dispatch(getFollowings());
@@ -22,17 +23,27 @@ class Follow extends React.Component {
     })
   }
 
+  following = (count) => {
+    this.setState({ followHeader: `Following: ${count}` })
+  }
+
+  followers = (count) => {
+    this.setState({ followHeader: `Followers: ${count}` })
+  }
+
   render() {
     const { following, followers } = this.props;
     return(
       <div className="card">
         <div className="card-content">
-          <h4>Following: { this.props.following.length }</h4>
+          <h4>
+            { this.state.followHeader === "" ? `Following: ${following.length}` : this.state.followHeader }
+          </h4>
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
-            <li className="tab"><a href="#test4">Following</a></li>
-            <li className="tab"><a href="#test5">Followers</a></li>
+            <li onClick={ () => this.following(following.length) } className="tab"><a href="#test4">Following</a></li>
+            <li onClick={ () => this.followers(followers.length) } className="tab"><a href="#test5">Followers</a></li>
           </ul>
         </div>
         <div className="card-content grey lighten-4">

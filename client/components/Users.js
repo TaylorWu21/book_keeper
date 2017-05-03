@@ -11,7 +11,6 @@ class Users extends React.Component {
 
   handleSearch = () => {
     const search = this.refs.search.value;
-    this.props.dispatch(getUsers());
     if(search === '')
       this.props.dispatch(getUsers());
     else
