@@ -97,13 +97,12 @@ class Book extends React.Component {
             <p><b>ISBN-</b>{book.isbn}</p>
           </div>
           <div className='col s12 m8 offset-m1'>
-            <div className='center'>
-              <span className='title'>
-                <b>Category:</b> {book.category}
-              </span>
-            </div>
             <p>
+              <b>Category:</b> {book.category}
+              <br />
+              <br />
               <b>Author:</b> {book.author}
+              <br />
               <br />
               <b>Description:</b> {book.description}
             </p>

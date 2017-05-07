@@ -28,7 +28,6 @@ class UserBook extends React.Component {
 
   render() {
     let { book, comments, user } = this.props;
-    console.log(comments);
     const allComments = comments.map(comment => {
       return( 
         <Comment 
@@ -50,15 +49,15 @@ class UserBook extends React.Component {
                 <p><b>ISBN-</b>{book.isbn}</p>
               </div>
               <div className='col s12 m9 offset-m1'>
-                <div className='center'>
-                  <span className='title'>
-                    <b>Title:</b> {book.title}
-                    <br />
-                    <b>Category:</b> {book.category}
-                  </span>
-                </div>
                 <p>
+                  <b>Title:</b> {book.title}
+                  <br />
+                  <br />
+                  <b>Category:</b> {book.category}
+                  <br />
+                  <br />
                   <b>Author:</b> {book.author}
+                  <br />
                   <br />
                   <b>Description:</b> {book.description}
                 </p>
