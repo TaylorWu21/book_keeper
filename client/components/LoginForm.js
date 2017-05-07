@@ -1,27 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 
-class LoginForm extends React.Component {
+const LoginForm = (props) => (
+  <form onSubmit={props.handleSubmit}>
+    <div>
+      <label htmlFor="email">Email</label>
+      <Field name="email" component="input" type="text" required />
+    </div>
+    <div>
+      <label htmlFor="password">Password</label>
+      <Field name="password" component="input" type="password"required />
+    </div>
+    <button type='submit' className='btn auth-button'>Login</button>
+    <br />
+    <br />
+    <Link to='/signup'>Sign Up Here</Link>
+  </form>
+);
 
-  render() {
-    return(
-      <form onSubmit={this.props.handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-          <Field name="email" component="input" type="text" required />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <Field name="password" component="input" type="password"required />
-        </div>
-        <button type='submit' className='btn'>Login</button>
-      </form>
-    );
-  }
-}
-
-LoginForm = reduxForm({
+const reduxLoginForm = reduxForm({
   form: 'login'
-})(LoginForm);
+});
 
-export default LoginForm;
+export default (reduxLoginForm)(LoginForm);

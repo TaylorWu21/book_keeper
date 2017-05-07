@@ -21,7 +21,7 @@ class Library extends React.Component {
     if(this.props.books) {
       return(
         <div>
-          <div className='input-field'>
+          <div className='container input-field'>
             <label htmlFor="search">Search with title, author, category, isbn...</label>
             <input id='search' type='text' ref='search' onChange={this.handleSearch} />
           </div>

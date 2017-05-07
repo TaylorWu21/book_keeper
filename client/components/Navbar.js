@@ -82,7 +82,7 @@ class Navbar extends React.Component {
                     <a href="#!email"><span className="white-text email">{user.email}</span></a>
                 </div></li>
               : 
-                <li className='black-text'>Nope</li>
+                <li className='black-text'><a>Please Login or Signup!</a></li>
             }
             { this.authLink() }
             <li><div className="divider"></div></li>

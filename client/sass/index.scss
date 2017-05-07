@@ -1,7 +1,12 @@
 @import "flash";
 @import "navbar";
 @import "profile";
+@import "auth";
 
 .secondary-content {
   position: relative !important;
+}
+
+label {
+  color: black !important;
 }

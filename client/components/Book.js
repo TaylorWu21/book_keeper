@@ -7,7 +7,7 @@ import FaTrash from 'react-icons/lib/fa/trash';
 
 class Book extends React.Component {
 
-  componentWillMount() {
+  componentDidMount() {
     $('.collapsible').collapsible();
   }
 
@@ -80,9 +80,15 @@ class Book extends React.Component {
     return(
       <li>
         <div className="collapsible-header">
-          <FaBook size={30} /> {book.title}
-          <div className='right'>
-            { this.buttonActions(this.props.parent) }
+          <div className='row' style={{marginBottom: '0px'}}>
+            <div className='col s9 m9'>
+              <FaBook size={30} /> {book.title}
+            </div>
+            <div className='col s3 m3'>
+              <div className='right'>
+                { this.buttonActions(this.props.parent) }
+              </div>
+            </div>
           </div>
         </div>
         <div className="collapsible-body row">
@@ -101,7 +107,6 @@ class Book extends React.Component {
               <br />
               <b>Description:</b> {book.description}
             </p>
-          
           </div>
         </div>
       </li>
