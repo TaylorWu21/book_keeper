@@ -4,6 +4,7 @@ import BookSearch from './BookSearch';
 import Profile from './Profile';
 import Follow from './Follow';
 import Library from './Library';
+import Users from './Users';
 
 class Dashboard extends React.Component {
 
@@ -13,20 +14,11 @@ class Dashboard extends React.Component {
         <div className='col s12 m2'>
           <Profile user={this.props.auth} onSubmit={this.handleUpdate} />
         </div>
-        <div className='col s12 m7'>
-          <nav className="nav-extended">
-            <div className="nav-content">
-              <ul className="tabs tabs-transparent">
-                <li className="tab"><a href="#test1">Library</a></li>
-                <li className="tab"><a href="#test2">Add Books</a></li>
-              </ul>
-            </div>
-          </nav>
-          <div id="test1" className="col s12"><Library /></div>
-          <div id="test2" className="col s12"><BookSearch /></div>
-        </div>
-        <div className='col s12 m3'>
-          <Follow />
+        <div className='col s12 m10'>
+          <div id="library" className="col s12"><Library /></div>
+          <div id="books" className="col s12"><BookSearch /></div>
+          <div id="users" className="col s12"><Users /></div>
+          <div id="following" className="col s12"><Follow /></div>
         </div>
       </div>
     )

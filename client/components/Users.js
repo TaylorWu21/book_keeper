@@ -25,8 +25,8 @@ class Users extends React.Component {
       );
     });
     return(
-      <div className='container'>
-        <h1>See Other Library</h1>
+      <div>
+        <h4>Find People's Library</h4>
         <div className='input-field'>
           <label htmlFor="search">Search for name or email</label>
           <input id='search' type='text' ref='search' onChange={this.handleSearch} />

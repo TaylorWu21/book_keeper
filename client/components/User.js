@@ -1,25 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
-import FaUserPlus from 'react-icons/lib/fa/user-plus';
 
 const User = (user) => (
   <li className='collection-item'>
-    <div className='row' style={{margin: '0px'}}>
-      <div className='col s10'>
-        <div className='valign-wrapper'>
-          <img 
-            className='responsive-img' 
-            src={user.avatar_url} alt='A User' 
-            style={{height: '50px', marginRight: '15px', borderRadius: '5%'}} />
-          <Link to={`/users/${user.id}`}>{user.name}</Link>
-        </div>
+    <Link to={`/users/${user.id}`}>
+      <div className='valign-wrapper'>
+        <img 
+          className='responsive-img' 
+          src={user.avatar_url} alt='A User' 
+          style={{height: '50px', marginRight: '15px', borderRadius: '5%'}} />
+        <p>{user.name}</p>
       </div>
-      <div className='col s2' style={{height: '50px'}}>
-        <div className='right'>
-          <FaUserPlus size={30} />
-        </div>
-      </div>
-    </div>
+    </Link>
   </li>
 )
 

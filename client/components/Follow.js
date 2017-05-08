@@ -15,7 +15,7 @@ class Follow extends React.Component {
   follow = (follow) => {
     return follow.map( f => {
       return(
-        <Link className='collection-item avatar' key={f.id} to={`/users/${f.following_id}`}>
+        <Link className='collection-item avatar valign-wrapper' key={f.id} to={`/users/${f.following_id}`}>
           <img src={f.following_avatar_url} alt="" className="circle" />
           <span>{f.following_name}</span>
         </Link>
@@ -46,7 +46,7 @@ class Follow extends React.Component {
             <li onClick={ () => this.followers(followers.length) } className="tab"><a href="#test5">Followers</a></li>
           </ul>
         </div>
-        <div className="card-content grey lighten-4">
+        <div className="card-content grey lighten-4 row">
           <ul id='test4' className='collection'>{ this.follow(following) }</ul>
           <ul id="test5" className='collection'>{ this.follow(followers) }</ul>
         </div>

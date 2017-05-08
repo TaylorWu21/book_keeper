@@ -61,7 +61,7 @@ class Navbar extends React.Component {
 	render() {
     const user = this.props.auth;
     return(
-      <nav>
+      <nav className="nav-extended">
         <div className="nav-wrapper">
           <a href="/" className="brand-logo">Book Keeper</a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={30}/></a>
@@ -86,6 +86,14 @@ class Navbar extends React.Component {
             { this.authLink() }
             <li><div className="divider"></div></li>
             { this.links() }
+          </ul>
+        </div>
+        <div className="nav-content">
+          <ul className="tabs tabs-transparent">
+            <li className="tab"><a href="#library">Library</a></li>
+            <li className="tab"><a href="#books">Add Books</a></li>
+            <li className="tab"><a href="#users">Users</a></li>
+            <li className="tab"><a href="#following">Following</a></li>
           </ul>
         </div>
       </nav>
