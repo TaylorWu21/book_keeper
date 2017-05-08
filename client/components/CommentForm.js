@@ -10,13 +10,24 @@ const CommentForm = (props) => {
           <div>
             <label>Comment</label>
             <div>
-              <Field name="message" component="input" type="text" placeholder="Comment" />
+              <Field name="message" component="input" type="text" />
             </div>
           </div>
         </div>
         <div className="modal-footer">
-          <button type='submit' className="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
-          <button type='button' onClick={ () => {$('#modal1').modal('close')}} className="modal-action modal-close waves-effect waves-orange btn-flat">Close</button>
+          <button 
+            type='submit' 
+            className="modal-action modal-close waves-effect waves-green btn-flat"
+          >
+            Submit
+          </button>
+          <button 
+            type='button' 
+            onClick={ () => {$('#modal1').modal('close')}} 
+            className="modal-action modal-close waves-effect waves-orange btn-flat"
+          >
+            Close
+          </button>
         </div>
       </form>
     </div>

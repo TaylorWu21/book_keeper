@@ -28,4 +28,8 @@ class Profile extends React.Component {
   }
 }
 
-export default connect()(Profile);
+const mapStateToProps = (state) => {
+  return { user: state.auth }
+}
+
+export default connect(mapStateToProps)(Profile);

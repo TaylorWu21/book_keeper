@@ -11,7 +11,12 @@ const ProfileInfo = ({user, dispatch}) => {
       <p><b>Email:</b> {user.email}</p>
       <p><b>Name:</b> {user.name}</p>
       <p><b>Phone:</b> {user.phone}</p>
-      <button className='btn orange' onClick={ () => dispatch(editUser(true)) }><FaEdit size={30}/></button>
+      <button 
+        className='btn orange' 
+        onClick={ () => dispatch(editUser(true)) }
+      >
+        <FaEdit size={30}/>
+      </button>
     </div>
   )
 }

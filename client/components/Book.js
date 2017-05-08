@@ -80,7 +80,7 @@ class Book extends React.Component {
     return(
       <li>
         <div className="collapsible-header">
-          <div className='row' style={{marginBottom: '0px'}}>
+          <div className='row noMargin'>
             <div className='col s9 m8'>
               <FaBook size={30} /> {book.title}
             </div>
@@ -93,7 +93,7 @@ class Book extends React.Component {
         </div>
         <div className="collapsible-body row">
           <div className='col s12 m2 offset-m1 center'>
-            <img src={book.image} alt='' style={{width: '150px', paddingTop: '20px'}}/>
+            <img src={book.image} alt={`image of ${book.title}`} className='book-img' />
             <p><b>ISBN-</b>{book.isbn}</p>
           </div>
           <div className='col s12 m8 offset-m1'>

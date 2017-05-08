@@ -39,8 +39,17 @@ class ProfileEdit extends React.Component {
             <label htmlFor="phone">Phone</label>
             <Field name='phone' component='input' type='text' />
           </div>
-          <button className='btn' type='submit'>Update</button>
-          <button className='btn orange' onClick={ () => this.props.dispatch(editUser(false)) }>Cancel</button>
+          <div className='col s6'>
+          <button className='btn edit-button' type='submit'>Update</button>
+          </div>
+          <div className='col s6'>
+          <button 
+            className='btn orange edit-button' 
+            onClick={ () => this.props.dispatch(editUser(false)) }
+          >
+            Cancel
+          </button>
+          </div>
         </form>
       </div>
     );

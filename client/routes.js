@@ -13,6 +13,7 @@ import Signup from './components/Signup';
 import Users from './components/Users';
 import UserLibrary from './components/UserLibrary';
 import UserBook from './components/UserBook';
+import Profile from './components/Profile';
 
 // TODO: FIX AUTH
 const UserIsAuthenticated = UserAuthWrapper({
@@ -32,10 +33,10 @@ export default (
       <Route path='/contact' component={Contact} />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={Signup} />
+      <Route path='/edit_profile' component={UserIsAuthenticated(Profile)} />
       <Route path='/users/:id' component={UserIsAuthenticated(UserLibrary)} />
       <Route path='/books/:book_id' component={UserIsAuthenticated(UserBook)} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
-      <Route path='/users' component={UserIsAuthenticated(Users)} />
     </Route>
     <Route path="*" status={404} component={NoMatch}/>
   </Route>

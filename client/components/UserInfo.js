@@ -18,10 +18,7 @@ class UserInfo extends React.Component {
         following_bool = true;
       };
     });
-    if(user.id === auth.id)
-      return 'nothing'
-    else
-      return following_bool;
+    return following_bool;
   }
 
   render() {
@@ -35,7 +32,7 @@ class UserInfo extends React.Component {
         {
           this.isFollowing() ?
             <button className='btn' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
-              <FaUserPlus size={25} />
+              <FaUserTimes size={25} />
               &nbsp; UnFollow
             </button>
           :

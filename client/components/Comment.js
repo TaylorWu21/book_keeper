@@ -21,10 +21,11 @@ class Comment extends React.Component {
       return(
         <li key={comment.comment_id} className='collection-item avatar row'>
           <div className='col s12 m3'>
-            <img className='responsive-img' src={comment.user_avatar_url} alt='' style={{height: '100px'}}/>
+            <img className='comment-img' src={comment.user_avatar_url} alt='' />
           </div>
           <div className='col s12 m9'>
-            <p><b>{comment.username}</b> {comment.message}</p>
+            <p><b>{comment.username}:</b> {comment.message}</p>
+            <br />
             <p>
               Date: &nbsp;
               {comment.created_at == comment.updated_at ? 
@@ -67,7 +68,13 @@ class Comment extends React.Component {
             </div>
             <div className="modal-footer">
               <button type='submit' className="aves-effect waves-green btn-flat">Submit</button>
-              <button type='button' onClick={ () => this.toggleEdit()} className="waves-effect waves-orange btn-flat">Close</button>
+              <button 
+                type='button' 
+                onClick={ () => this.toggleEdit() } 
+                className="waves-effect waves-orange btn-flat"
+              >
+                Close
+              </button>
             </div>
           </form>
         </li>

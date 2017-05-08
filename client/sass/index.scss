@@ -1,7 +1,11 @@
+@import "auth";
+@import "book";
+@import "comment";
 @import "flash";
+@import "follow";
 @import "navbar";
 @import "profile";
-@import "auth";
+@import "user";
 
 .secondary-content {
   position: relative !important;

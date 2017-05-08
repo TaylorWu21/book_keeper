@@ -14,6 +14,12 @@ class Navbar extends React.Component {
     });
   }
 
+  componentDidUpdate() {
+    $('ul.tabs').tabs({
+      swipeable: true
+    });
+  }
+
   link = (i, name, path) => {
     let activeClass = this.props.location.pathname === path ? 'active' : '';
     return(
@@ -36,17 +42,25 @@ class Navbar extends React.Component {
 		if(Object.keys(this.props.auth).length > 1) {
       let links = [
         { name: 'Dashboard', path: '/dashboard' },
-        { name: 'All Users', path: '/users' }
       ].map( (link, i) => {
         return this.link(i, link.name, link.path);
       });
+
+      links.push(
+        <li key='edit-profile' className='hide-on-med-and-up'>
+          <Link to='/edit_profile'>
+            Edit Profile
+          </Link>
+        </li>
+      )
+      
       links.push(
         <li key='logout'>
           <a href='#' onClick={ (e) => this.props.dispatch(logout())}>
             Logout
           </a>
         </li>
-      )
+      );
       return links;
     } else {
       return [
@@ -58,10 +72,23 @@ class Navbar extends React.Component {
     }
 	}
 
+  loggedInNavar = () => {
+    return(
+      <div className="nav-content">
+        <ul className="tabs tabs-transparent">
+          <li className="tab"><a className="active" href="#library">Library</a></li>
+          <li className="tab"><a href="#books">Add Books</a></li>
+          <li className="tab"><a href="#users">Users</a></li>
+          <li className="tab"><a href="#follow">Following</a></li>
+        </ul>
+      </div>
+    );
+  }
+
 	render() {
     const user = this.props.auth;
     return(
-      <nav className="nav-extended">
+      <nav className={Object.keys(user).length? 'nav-extended' : ''}>
         <div className="nav-wrapper">
           <a href="/" className="brand-logo">Book Keeper</a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={30}/></a>
@@ -88,14 +115,13 @@ class Navbar extends React.Component {
             { this.links() }
           </ul>
         </div>
-        <div className="nav-content">
-          <ul className="tabs tabs-transparent">
-            <li className="tab"><a href="#library">Library</a></li>
-            <li className="tab"><a href="#books">Add Books</a></li>
-            <li className="tab"><a href="#users">Users</a></li>
-            <li className="tab"><a href="#following">Following</a></li>
-          </ul>
-        </div>
+        {
+          Object.keys(user).length?
+            this.loggedInNavar()
+          :
+            null
+        }
+        
       </nav>
     );
 	}

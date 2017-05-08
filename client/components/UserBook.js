@@ -47,7 +47,7 @@ class UserBook extends React.Component {
           <ul className='collection'>
             <li className='collection-item avatar row'>
               <div className='col s12 m2 center'>
-                <img src={book.image} alt='' style={{width: '150px'}}/>
+                <img src={book.image} alt='' className='book-img' />
                 <p><b>ISBN-</b>{book.isbn}</p>
               </div>
               <div className='col s12 m9 offset-m1'>
