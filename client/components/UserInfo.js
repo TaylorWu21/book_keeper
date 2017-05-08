@@ -11,14 +11,37 @@ class UserInfo extends React.Component {
   }
 
   isFollowing = () => {
-    let following_bool = false;
     const { auth, user, followings } = this.props;
+    let followButton = "follow";
+
     followings.forEach( following => {
-      if(following.following_id == user.id) {
-        following_bool = true;
-      };
+      if(following.following_id == user.id)
+        followButton = "unfollow";
     });
-    return following_bool;
+
+    if(user.id === auth.id)
+      followButton = "nothing"
+    
+    switch(followButton) {
+      case "follow":
+        return(
+          <button className='btn' onClick={ () => this.props.dispatch(addFollowing(user.id)) }>
+            <FaUserPlus size={25} />
+            &nbsp; Follow
+          </button>
+        );
+      case "unfollow":
+        return(
+          <button className='btn' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
+            <FaUserTimes size={25} />
+            &nbsp; UnFollow
+          </button>
+        );
+      default:
+        return(
+          null
+        )
+    }
   }
 
   render() {
@@ -29,24 +52,13 @@ class UserInfo extends React.Component {
         <p><b>Email:</b> {user.email}</p>
         <p><b>Name:</b> {user.name}</p>
         <p><b>Phone:</b> {user.phone}</p>
-        {
-          this.isFollowing() ?
-            <button className='btn' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
-              <FaUserTimes size={25} />
-              &nbsp; UnFollow
-            </button>
-          :
-            <button className='btn' onClick={ () => this.props.dispatch(addFollowing(user.id)) }>
-              <FaUserPlus size={25} />
-              &nbsp; Follow
-            </button>
-        }
+        { this.isFollowing() }
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state,props) => {
   return { 
     auth: state.auth,
     followings: state.following,
