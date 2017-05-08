@@ -81,10 +81,10 @@ class Book extends React.Component {
       <li>
         <div className="collapsible-header">
           <div className='row' style={{marginBottom: '0px'}}>
-            <div className='col s9 m9'>
+            <div className='col s9 m8'>
               <FaBook size={30} /> {book.title}
             </div>
-            <div className='col s3 m3'>
+            <div className='col s3 m4'>
               <div className='right'>
                 { this.buttonActions(this.props.parent) }
               </div>

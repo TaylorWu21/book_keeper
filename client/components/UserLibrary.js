@@ -14,8 +14,10 @@ class UserLibrary extends React.Component {
       const { user, books } = this.props
       return(
         <div className='row'>
-          <UserInfo user={user} />
-          <div className='col s12 m9'>
+          <div className='center col s12 m2'>
+            <UserInfo user={user} />
+          </div>
+          <div className='col s12 m10'>
             <Books books={books} parent='othersLibrary' />
           </div>
         </div>

@@ -36,7 +36,6 @@ class Navbar extends React.Component {
 		if(Object.keys(this.props.auth).length > 1) {
       let links = [
         { name: 'Dashboard', path: '/dashboard' },
-        { name: 'Library', path: '/library' },
         { name: 'All Users', path: '/users' }
       ].map( (link, i) => {
         return this.link(i, link.name, link.path);

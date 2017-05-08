@@ -12,26 +12,29 @@ class UserInfo extends React.Component {
 
   isFollowing = () => {
     let following_bool = false;
-    const { user, auth } = this.props;
-    this.props.followings.map( following => {
+    const { auth, user, followings } = this.props;
+    followings.forEach( following => {
       if(following.following_id == user.id) {
-        following_bool = true
+        following_bool = true;
       };
     });
-    return following_bool;
+    if(user.id === auth.id)
+      return 'nothing'
+    else
+      return following_bool;
   }
 
   render() {
     const user = this.props.user;
     return(
-      <div className='center col s12 m3'>
-        <img className='profile-img responsive-img' src={user.avatar_url} />
+      <div>
+        <img className='profile-img' src={user.avatar_url} />
         <p><b>Email:</b> {user.email}</p>
         <p><b>Name:</b> {user.name}</p>
         <p><b>Phone:</b> {user.phone}</p>
         {
           this.isFollowing() ?
-            <button className='btn red' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
+            <button className='btn' onClick={ () => this.props.dispatch(deleteFollowing(user.id)) }>
               <FaUserPlus size={25} />
               &nbsp; UnFollow
             </button>
@@ -46,10 +49,10 @@ class UserInfo extends React.Component {
   }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return { 
     auth: state.auth,
-    followings: state.following
+    followings: state.following,
   }
 }
 

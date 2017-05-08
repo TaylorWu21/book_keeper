@@ -47,7 +47,7 @@ class BookSearch extends React.Component {
   render() {
     return(
       <div>
-        <h1>Books</h1>
+        <h4>Search for books to add to your library</h4>
         <h3>{this.state.bookStatus}</h3>
         <BookSearchForm onSubmit={this.handleSearch}/>
         <Books books={this.state.books} parent='search' />

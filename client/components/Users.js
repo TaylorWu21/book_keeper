@@ -7,6 +7,7 @@ class Users extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(getUsers());
+    $('.collapsible').collapsible();
   }
 
   handleSearch = () => {
@@ -24,13 +25,13 @@ class Users extends React.Component {
       );
     });
     return(
-      <div>
-        <h1>View Other's Library</h1>
+      <div className='container'>
+        <h1>See Other Library</h1>
         <div className='input-field'>
           <label htmlFor="search">Search for name or email</label>
           <input id='search' type='text' ref='search' onChange={this.handleSearch} />
         </div>
-        <ul className='collection'>
+        <ul className="collection" data-collapsible="accordion">
           {users}
         </ul>
       </div>

@@ -40,8 +40,10 @@ class UserBook extends React.Component {
     });
     return(
       <div className='row'>
-        <UserInfo user={user} />
-        <div className='col s12 m9'>
+        <div className='col s12 m2 center'>
+          <UserInfo user={user} />
+        </div>
+        <div className='col s12 m10'>
           <ul className='collection'>
             <li className='collection-item avatar row'>
               <div className='col s12 m2 center'>
@@ -67,9 +69,11 @@ class UserBook extends React.Component {
           <div className='container'>
             <h2>Comments</h2>
             <ul className='collection'>
-              { !comments.length > 0 ? <li className='collection-item'>No Comments</li> : allComments }
+              { !comments.length > 0 ? <li className='collection-item'>Be the first to comment!</li> : allComments }
             </ul>
-            <a className="waves-effect waves-green btn" href="#modalNew"><FaCommenting size={30} /></a>
+            <a className="waves-effect waves-green btn" href="#modalNew">
+              Add A Comment <FaCommenting size={25} />
+            </a>
           </div>
         </div>
         <CommentForm onSubmit={this.handleSubmitComment} />

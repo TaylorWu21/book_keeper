@@ -10,7 +10,6 @@ import Contact from './components/Contact';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
-import Library from './components/Library';
 import Users from './components/Users';
 import UserLibrary from './components/UserLibrary';
 import UserBook from './components/UserBook';
@@ -36,7 +35,6 @@ export default (
       <Route path='/users/:id' component={UserIsAuthenticated(UserLibrary)} />
       <Route path='/books/:book_id' component={UserIsAuthenticated(UserBook)} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />
-      <Route path='/library' component={UserIsAuthenticated(Library)} />
       <Route path='/users' component={UserIsAuthenticated(Users)} />
     </Route>
     <Route path="*" status={404} component={NoMatch}/>
