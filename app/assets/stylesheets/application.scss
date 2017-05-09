@@ -2,3 +2,22 @@
 $primary-color: color("cyan", "lighten-2") !default;
 $secondary-color: color("orange", "darken-4") !default;
 @import 'materialize';
+
+@import "auth";
+@import "book";
+@import "comment";
+@import "flash";
+@import "follow";
+@import "footer";
+@import "navbar";
+@import "profile";
+@import "staticPages";
+@import "user";
+
+.secondary-content {
+  position: relative !important;
+}
+
+label {
+  color: black;
+}
