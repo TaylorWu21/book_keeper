@@ -14,7 +14,7 @@ var production = process.env.NODE_ENV === 'production';
 var config = {
   entry: {
     // Sources are expected to live in $app_root/webpack
-    'application': './client/application.js'
+    'application': ['./client/application.js', './client/sass/index.scss'],
   },
 
   output: {
@@ -51,6 +51,10 @@ var config = {
           limit: 25000
         }
       },
+      {
+        test: /\.scss$/,
+        loaders: ["style-loader","css-loader","sass-loader"]
+      }
     ]
   },
 
