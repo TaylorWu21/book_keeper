@@ -33,7 +33,7 @@ export default (
       <Route path='/contact' component={Contact} />
       <Route path='/login' component={Login} />
       <Route path='/signup' component={Signup} />
-      <Route path='/edit_profile' component={UserIsAuthenticated(Profile)} />
+      <Route path='/profile' component={UserIsAuthenticated(Profile)} />
       <Route path='/users/:id' component={UserIsAuthenticated(UserLibrary)} />
       <Route path='/books/:book_id' component={UserIsAuthenticated(UserBook)} />
       <Route path='/dashboard' component={UserIsAuthenticated(Dashboard)} />

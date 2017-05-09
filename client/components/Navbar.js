@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import FaBars from 'react-icons/lib/fa/bars';
 import { logout } from '../actions/auth';
+import Logo from '../images/logo.png';
 
 class Navbar extends React.Component {
 
@@ -49,7 +50,7 @@ class Navbar extends React.Component {
 
       links.push(
         <li key='edit-profile' className='hide-on-med-and-up'>
-          <Link to='/edit_profile'>
+          <Link to='/profile'>
             Edit Profile
           </Link>
         </li>
@@ -93,7 +94,7 @@ class Navbar extends React.Component {
     return(
       <nav className={ this.props.location.pathname === '/dashboard' ? 'nav-extended' : ''}>
         <div className="nav-wrapper">
-          <a href="/" className="brand-logo">Book Keeper</a>
+          <Link to="/" className="brand-logo"><img src={Logo} className='nav-logo' /></Link>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={30}/></a>
           <ul className="right hide-on-med-and-down">
             { this.links() }
