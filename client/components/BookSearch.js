@@ -3,7 +3,7 @@ import Books from './Books';
 import BookSearchForm from './BookSearchForm';
 
 class BookSearch extends React.Component {
-  state = { books: [], bookStatus: '' };
+  state = { books: [], bookStatus: '', loading: false };
 
   formatBooks(books) {
     let filteredBooks = books.filter( book => {
@@ -25,10 +25,11 @@ class BookSearch extends React.Component {
       }
       return singleBook;
     });
-    this.setState({ books: formattedBooks, bookStatus: '' });
+    this.setState({ books: formattedBooks, bookStatus: '', loading: false });
   }
 
   handleSearch = (search) => {
+    this.setState({loading: true});
     $.ajax({
       url: `https://www.googleapis.com/books/v1/volumes?q=${search.title? search.title : ''}+inauthor:${search.author? search.author : ''}`,
       type: 'GET',
@@ -37,12 +38,28 @@ class BookSearch extends React.Component {
       if(books.totalItems !== 0) {
         this.formatBooks(books.items);
       } else {
-        this.setState({ bookStatus: 'No Books Found' });
-      } 
+        this.setState({ bookStatus: 'No Books Found', loading: false });
+      }
     }).fail( data =>{
       console.log(data);
     })
   }
+
+  loader = () => (
+    <div className='center'>
+      <div className="preloader-wrapper big active">
+        <div className="spinner-layer spinner-blue-only">
+          <div className="circle-clipper left">
+            <div className="circle"></div>
+          </div><div className="gap-patch">
+            <div className="circle"></div>
+          </div><div className="circle-clipper right">
+            <div className="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 
   render() {
     return(
@@ -50,7 +67,12 @@ class BookSearch extends React.Component {
         <h4>Search for books to add to your library</h4>
         <h3>{this.state.bookStatus}</h3>
         <BookSearchForm onSubmit={this.handleSearch}/>
-        <Books books={this.state.books} parent='search' />
+        {
+          this.state.loading? 
+            this.loader()
+          : 
+            <Books books={this.state.books} parent='search' /> 
+        }
       </div>
     )
   }
