@@ -1,7 +1,7 @@
 import React from 'react';
 import MdLibraryBooks from 'react-icons/lib/md/library-books';
 import MdPeople from 'react-icons/lib/md/people';
-import Search from 'react-icons/lib/md/Search'
+import MdSearch from 'react-icons/lib/md/search';
 
 class Home extends React.Component {
 
@@ -40,7 +40,7 @@ class Home extends React.Component {
           </p>
         </div>
         <div className='col s12 m4 center'>
-          <Search size={100} />
+          <MdSearch size={100} />
           <h4>Search with the best</h4>
           <p>
             We use Google Books API to search for any books you want and add it to your library!
