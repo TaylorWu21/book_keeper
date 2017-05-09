@@ -1,28 +1,43 @@
 import React from 'react';
+import { Link } from 'react-router';
+import FaTwitterSquare from 'react-icons/lib/fa/twitter-square';
+import FaFacebookSquare from 'react-icons/lib/fa/facebook-square';
+import FaInstagram from 'react-icons/lib/fa/instagram';
+import FaGithubSquare from 'react-icons/lib/fa/github-square';
 
 const Footer = () => (
   <footer className="page-footer">
     <div className="container">
       <div className="row">
         <div className="col l6 s12">
-          <h5 className="white-text">Footer Content</h5>
-          <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+          <h5 className="white-text">Follow Me On Social Media!</h5>
+          <div>
+            <a className='white-text footer-links' href='https://twitter.com/DrinkMySoySauce'>
+              <FaTwitterSquare size={60} />
+            </a>
+            <a className='white-text footer-links' href='https://www.instagram.com/drinkmysoysauce/'>
+              <FaInstagram size={60} />
+            </a>
+            <a className='white-text footer-links' href='https://www.facebook.com/wuhooo'>
+              <FaFacebookSquare size={60} />
+            </a>
+            <a className='white-text footer-links' href='https://github.com/taylorwu21'>
+              <FaGithubSquare size={60} />
+            </a>
+          </div>
         </div>
         <div className="col l4 offset-l2 s12">
-          <h5 className="white-text">Information</h5>
+          <h5 className="white-text">Learn More</h5>
           <ul>
-            <li><a className="grey-text text-lighten-3" href="#!">About</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Contact</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 3</a></li>
-            <li><a className="grey-text text-lighten-3" href="#!">Link 4</a></li>
+            <li><Link to='/about' className="grey-text text-lighten-3">About</Link></li>
+            <li><Link to='/contact' className="grey-text text-lighten-3">Contact</Link></li>
           </ul>
         </div>
       </div>
     </div>
     <div className="footer-copyright">
       <div className="container">
-      © 2017 Copyright Text
-      <a className="grey-text text-lighten-4 right" href="#!">More Links</a>
+      © Created in 2017. Wow This Website is Sick!!
       </div>
     </div>
   </footer>

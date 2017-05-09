@@ -5,6 +5,7 @@ import { getUserLibrary } from '../actions/books';
 import UserInfo from './UserInfo';
 
 class UserLibrary extends React.Component {
+
   componentDidMount() {
     this.props.dispatch(getUserLibrary(this.props.params.id));
   }

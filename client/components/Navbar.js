@@ -12,6 +12,7 @@ class Navbar extends React.Component {
       closeOnClick: true,
       draggable: true
     });
+    let props = this.props;
   }
 
   componentDidUpdate() {
@@ -52,7 +53,7 @@ class Navbar extends React.Component {
             Edit Profile
           </Link>
         </li>
-      )
+      );
       
       links.push(
         <li key='logout'>
@@ -61,7 +62,9 @@ class Navbar extends React.Component {
           </a>
         </li>
       );
+
       return links;
+
     } else {
       return [
         { name: 'Log In', path: '/login' },
@@ -88,7 +91,7 @@ class Navbar extends React.Component {
 	render() {
     const user = this.props.auth;
     return(
-      <nav className={Object.keys(user).length? 'nav-extended' : ''}>
+      <nav className={ this.props.location.pathname === '/dashboard' ? 'nav-extended' : ''}>
         <div className="nav-wrapper">
           <a href="/" className="brand-logo">Book Keeper</a>
           <a href="#" data-activates="mobile-demo" className="button-collapse"><FaBars size={30}/></a>
@@ -114,14 +117,19 @@ class Navbar extends React.Component {
             <li><div className="divider"></div></li>
             { this.links() }
           </ul>
+          <div id='nav-paragragh' className='hide'>
+            <div className='center'>
+              <h1 className='nav-text'>Welcome To Book Keeper!</h1>
+              <h4 className='nav-subheader'>A Place To Store Your Personal Library</h4>
+            </div>
+          </div>
         </div>
         {
-          Object.keys(user).length?
+          this.props.location.pathname === '/dashboard'?
             this.loggedInNavar()
           :
             null
         }
-        
       </nav>
     );
 	}
