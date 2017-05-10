@@ -12,16 +12,16 @@ const Footer = () => (
         <div className="col l6 s12">
           <h5 className="white-text">Follow Me On Social Media!</h5>
           <div>
-            <a className='white-text footer-links' href='https://twitter.com/DrinkMySoySauce'>
+            <a className='white-text footer-links' href='https://twitter.com/DrinkMySoySauce' target="_blank">
               <FaTwitterSquare size={60} />
             </a>
-            <a className='white-text footer-links' href='https://www.instagram.com/drinkmysoysauce/'>
+            <a className='white-text footer-links' href='https://www.instagram.com/drinkmysoysauce/' target="_blank">
               <FaInstagram size={60} />
             </a>
-            <a className='white-text footer-links' href='https://www.facebook.com/wuhooo'>
+            <a className='white-text footer-links' href='https://www.facebook.com/wuhooo' target="_blank">
               <FaFacebookSquare size={60} />
             </a>
-            <a className='white-text footer-links' href='https://github.com/taylorwu21'>
+            <a className='white-text footer-links' href='https://github.com/taylorwu21' target="_blank">
               <FaGithubSquare size={60} />
             </a>
           </div>
