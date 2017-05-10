@@ -23,6 +23,7 @@ export const addFollowing = (following_id) => {
       data: { follower: { following_id } }
     }).done( following => {
       dispatch({ type: "ADD_FOLLOWING", following });
+      dispatch(setFlash("Following!", "success"));
     }).fail( data => {
       if(data.responseText.includes("taken"))
         dispatch(setFlash("You are already following this person", "error"));
@@ -38,6 +39,7 @@ export const deleteFollowing = (followId) => {
       type: 'DELETE'
     }).done( () => {
       dispatch({ type: "DELETE_FOLLOWING", followId })
+      dispatch(setFlash("Unfollowed", "success"));
     }).fail( data => {
       console.log(data);
     });
