@@ -1,21 +1,38 @@
 import React from 'react';
 import Taylor from '../images/Me.jpg';
+import FaGithub from 'react-icons/lib/fa/github';
 
 const About = () => (
-  <div className='container row'>
+  <div className='container'>
     <h4 className='about-margin'>Who Built This Amazing Website?</h4>
-    <div className='col s12 m6 center'>
-      <img src={Taylor} className='about-img' />
+    <div className='row'>
+      <div className='col s12 m6 center'>
+        <img src={Taylor} className='about-img' />
+      </div>
+      <div className='col s12 m6'>
+        <div className='valign-wrapper'>
+          <p>
+            Book Keeper was built by me! Taylor Wu.
+            I graduated from the University of Utah in Information System.
+            This website was built on my spare time. 
+            Programming is my passion and I love learning new technologies by building websites.
+            This is one of my personal project that I felt that I would use myself.
+          </p>
+        </div>
+      </div>
     </div>
-    <div className='col s12 m6'>
+    <div className='row'>
       <div className='valign-wrapper'>
-      <p>
-        Book Keeper was built by me! Taylor Wu.
-        I graduated from the University of Utah in Information System.
-        This website was built on my spare time. 
-        Programming is my passion and I love learning new technologies by building websites.
-        This is one of my personal project that I felt that I would use myself.
-      </p>
+      <div className='col s12 m6 center'>
+        <div className='center'>
+          <h5>Here is the Github Repo!</h5>
+        </div>
+      </div>
+      <div className='col s12 m6 center'>
+        <a href="https://github.com/TaylorWu21/book_keeper" className='black-text footer-links' target="_blank">
+          <FaGithub size={150} />
+        </a>
+      </div>
       </div>
     </div>
     <div className='col s12'>
