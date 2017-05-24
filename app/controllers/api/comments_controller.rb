@@ -1,4 +1,5 @@
 class Api::CommentsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
 
   def index
     user_id = Book.find(params[:book_id]).user_id
@@ -7,8 +8,8 @@ class Api::CommentsController < ApplicationController
       comment = comment_json(comment)
       comments.push(comment)
     end
-    render json: { 
-      comments: comments, 
+    render json: {
+      comments: comments,
       book: Book.find(params[:book_id]),
       user: User.find(user_id)
     }
